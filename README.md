@@ -1,63 +1,26 @@
 # PCP
 
-> **An open standard for preserving project context across humans and AI.**
+> An open standard for preserving project context across humans and AI.
 
-PCP (Project Context Protocol) is an open specification designed to preserve the knowledge, decisions, and continuity of software projects.
+PCP (Project Context Protocol) is an open specification that standardizes how software projects preserve, transfer, and evolve context.
 
-Instead of forcing every contributor to rediscover a project's history, PCP provides a standardized way to transfer context between humans and AI assistants.
+Its purpose is simple:
 
-The goal is simple:
+**Spend less time rebuilding context, and more time building software.**
 
-> **Spend less time rebuilding context, and more time building software.**
+## Why?
 
----
-
-## Why PCP?
-
-Software projects lose context.
+Projects lose context.
 
 - People change.
 - AI assistants change.
 - Conversations disappear.
 - Documentation becomes outdated.
-- Decisions become invisible.
+- Decisions become disconnected.
 
-PCP defines a common language for preserving project knowledge.
+PCP defines a common language for project continuity.
 
----
+## Status
 
-## Core Principles
+Draft Specification v0.1
 
-- AI Independent
-- Human Friendly
-- Tool Independent
-- Language Independent
-- Open Standard
-- Living Context
-
----
-
-## Project Status
-
-**Draft Specification v0.1**
-
-The standard is currently under active design.
-
----
-
-## Repository Structure
-
-```
-docs/
-rfcs/
-reference/
-examples/
-assets/
-scripts/
-```
-
----
-
-## License
-
-MIT (planned)

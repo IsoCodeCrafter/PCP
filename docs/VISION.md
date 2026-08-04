@@ -1,24 +1,20 @@
-# Project Vision
+# Vision
 
 ## Problem
 
 Software projects gradually lose context.
 
-People change.
-AI agents change.
-Conversations disappear.
-Documentation becomes outdated.
-
-As context is lost, teams repeat analysis, revisit old decisions, and waste time rebuilding understanding instead of moving forward.
+As context disappears, contributors repeatedly rediscover information instead of continuing existing work.
 
 ## Vision
 
-Create an open standard for preserving project context, independent of any AI, programming language, or development tool.
+Create an open standard for preserving project context independently of AI models, programming languages and development tools.
 
 ## Mission
 
-Standardize project context so every contributor—human or AI—can continue a software project with the same shared understanding.
+Enable every contributor to continue a software project with shared understanding.
 
 ## North Star
 
 **Standardizing Project Context to Preserve Project Continuity.**
+
