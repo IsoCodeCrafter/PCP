@@ -24,3 +24,14 @@ PCP defines a common language for project continuity.
 
 Draft Specification v0.1
 
+## Repository
+
+```text
+docs/        Specification
+rfcs/        RFC documents
+reference/   Reference implementation
+examples/    Example projects
+assets/      Images and diagrams
+scripts/     Development scripts
+```
+
