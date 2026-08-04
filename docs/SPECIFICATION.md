@@ -6,51 +6,45 @@ Status: Draft
 
 ---
 
-# 1. Purpose
+# Document Structure
 
-PCP (Project Context Protocol) defines an open standard for preserving project context.
-
-The goal is to allow any contributor—human or AI—to continue a software project without rebuilding understanding from previous conversations.
-
----
-
-# 2. Objectives
-
-A PCP compliant project SHALL:
-
-- Preserve important project knowledge.
-- Preserve architectural decisions.
-- Preserve current project state.
-- Preserve unfinished work.
-- Reduce context rebuilding.
-- Be understandable by both humans and AI.
+1. Purpose
+2. Terminology
+3. Core Context Model
+4. Compliance
+5. Reference Implementation
+6. Versioning
 
 ---
 
-# 3. Core Components
+# Purpose
 
-Every PCP project consists of:
-
-- Project Context
-- Living Documents
-- Decision History
-- Current Focus
-- Open Loops
-- Operational Guide
+PCP standardizes project context.
 
 ---
 
-# 4. Living Documents
+# Terminology
 
-Living Documents evolve together with the project.
-
-They are continuously updated instead of rewritten.
+See GLOSSARY.md
 
 ---
 
-# 5. Reference Implementation
+# Core Context Model
 
-The `.context` directory is the official reference implementation.
+See RFC-0001.
 
-Alternative implementations are allowed as long as they comply with this specification.
+---
 
+# Compliance
+
+A PCP implementation SHALL preserve every required concept.
+
+Implementations MAY choose any storage format.
+
+---
+
+# Reference Implementation
+
+The `.context/` directory is the first official reference implementation.
+
+Other implementations remain compliant if they satisfy the specification.
