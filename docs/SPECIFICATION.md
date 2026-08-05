@@ -100,19 +100,51 @@ Future revisions of this specification MAY reference additional standards where 
 
 # 5. Conceptual Model
 
-Reference:
+The Project Context Protocol (PCP) is based on a conceptual model consisting of four foundational concepts.
 
-docs/CORE_CONCEPTS.md
+These concepts provide the semantic foundation for all normative requirements defined by this specification.
 
-Defines the conceptual foundation of PCP.
+## 5.1 Foundational Concepts
+
+The PCP conceptual model consists of the following concepts:
+
+* Project
+* Context
+* Contributor
+* Project Continuity
+
+No concept defined by PCP exists independently of this model.
+
+## 5.2 Concept Relationships
+
+The relationships between the foundational concepts are defined as follows:
+
+* A **Project** provides the scope within which Project Context exists.
+* A **Context** contains the information required to understand, maintain, and continue a Project.
+* A **Contributor** creates, maintains, validates, and consumes Project Context.
+* **Project Continuity** is achieved through the preservation and maintenance of Project Context.
+
+These relationships are normative and apply to all PCP-compliant implementations.
+
+## 5.3 Technology Independence
+
+The conceptual model defined by PCP is independent of implementation technologies.
+
+A compliant implementation MAY represent these concepts using Markdown, JSON, databases, knowledge graphs, object models, or other technologies, provided that the concepts and their relationships remain semantically equivalent.
+
+## 5.4 Authority
+
+The definitions of the foundational concepts are maintained in the PCP Core Concepts document.
+
+This specification defines the normative requirements that apply to those concepts.
 
 ---
 
-# 6. Project Context Model
+# # 6. Project Context Model
 
-Defines the required components of Project Context.
+Project Context is the standardized body of information required to preserve project continuity.
 
-Including but not limited to:
+A PCP-compliant Project Context SHALL contain, at a minimum, the following conceptual components:
 
 * Decisions
 * Knowledge
@@ -121,86 +153,208 @@ Including but not limited to:
 * Architecture
 * Operational Guide
 
+Implementations MAY organize these components differently, provided that their meaning and relationships are preserved.
+
+## 6.1 Decisions
+
+Decisions document significant choices made during the evolution of a Project.
+
+Each decision SHOULD include:
+
+* rationale
+* consequences
+* status
+* date
+* author or originating contributor
+
+## 6.2 Knowledge
+
+Knowledge captures durable information that contributors are expected to preserve beyond individual tasks.
+
+Examples include:
+
+* domain knowledge
+* business rules
+* technical constraints
+* project conventions
+
+## 6.3 Current State
+
+Current State describes the present condition of the Project.
+
+It SHOULD summarize:
+
+* completed work
+* ongoing work
+* known issues
+* active priorities
+
+## 6.4 Open Work
+
+Open Work identifies tasks, problems, and unresolved questions.
+
+Open Work SHOULD remain implementation independent.
+
+## 6.5 Architecture
+
+Architecture documents the structural organization of the Project.
+
+Examples include:
+
+* system structure
+* component relationships
+* dependency boundaries
+* integration points
+
+## 6.6 Operational Guide
+
+Operational Guide describes procedures required to operate, maintain, and contribute to the Project.
+
+Examples include:
+
+* setup
+* deployment
+* release procedures
+* maintenance operations
+
 ---
 
 # 7. Requirements
 
-Normative requirements for PCP-compliant implementations.
+A PCP-compliant implementation MUST satisfy the following requirements.
 
-Requirements are expressed using RFC 2119 terminology.
+## R-1
+
+A Project MUST define exactly one Project Context.
+
+## R-2
+
+Project Context MUST preserve the conceptual model defined by PCP.
+
+## R-3
+
+All required conceptual components MUST be represented.
+
+## R-4
+
+Context MUST remain understandable independent of its original contributors.
+
+## R-5
+
+Implementations MUST preserve semantic equivalence when transforming or exchanging Project Context.
+
+## R-6
+
+Implementations MAY introduce additional concepts provided they do not violate PCP semantics.
 
 ---
 
 # 8. Conformance
 
-Defines what constitutes a PCP-compliant implementation.
+An implementation is considered PCP-compliant if it satisfies all mandatory requirements defined by this specification.
 
-Compliance levels.
+Compliance is evaluated against concepts rather than file layouts or technologies.
 
-Mandatory concepts.
+A compliant implementation:
 
-Optional extensions.
+* MUST preserve all foundational concepts.
+* MUST preserve conceptual relationships.
+* MUST satisfy all mandatory requirements.
+* MAY define implementation-specific extensions.
+
+Failure to satisfy a mandatory requirement results in non-conformance.
 
 ---
 
 # 9. Reference Implementation
 
-Defines the official reference implementation.
+The PCP Reference Implementation demonstrates one valid realization of this specification.
 
-Clarifies the relationship between concepts and concrete implementations.
+It exists to illustrate the concepts defined by PCP.
+
+The Reference Implementation is informative rather than normative.
+
+Alternative implementations are considered compliant provided they satisfy all normative requirements defined by this specification.
 
 ---
 
 # 10. Extensibility
 
-Guidelines for extending PCP without breaking compatibility.
+PCP is designed to evolve without breaking existing implementations.
 
-Versioning principles.
+Extensions:
+
+* MUST preserve existing concepts.
+* MUST preserve semantic compatibility.
+* SHOULD remain backward compatible whenever practical.
+
+Implementations MAY introduce optional capabilities provided they do not redefine normative concepts.
 
 ---
 
 # 11. Security Considerations
 
-Potential risks.
+Project Context may contain sensitive information.
 
-Sensitive information.
+Implementations SHOULD consider:
 
-Access control.
+* access control
+* authentication
+* authorization
+* confidential information
+* secret management
+* auditability
 
-Secrets.
+PCP does not define security mechanisms.
 
-Project privacy.
+Security remains the responsibility of individual implementations.
 
 ---
 
 # 12. Future Evolution
 
-Compatibility strategy.
+Future revisions of PCP SHALL preserve conceptual compatibility whenever practical.
 
-Deprecation policy.
+Breaking conceptual changes SHOULD be introduced only through a major specification revision.
 
-Migration principles.
+Future versions MAY introduce:
+
+* additional concepts
+* optional capabilities
+* validation mechanisms
+* interoperability improvements
+
+Existing compliant implementations SHOULD remain valid unless explicitly deprecated by a future major version.
 
 ---
 
 # Appendix A — Terminology
 
-Quick reference for important PCP terms.
+| Term               | Definition                                                             |
+| ------------------ | ---------------------------------------------------------------------- |
+| Project            | A bounded initiative possessing identity, purpose, and continuity.     |
+| Context            | The information required to continue a Project.                        |
+| Contributor        | Any entity capable of producing or consuming Project Context.          |
+| Project Continuity | The capability of a Project to evolve despite changes in Contributors. |
 
 ---
 
-# Appendix B — Document Structure
+# Appendix B — Document Relationships
 
-Relationship between:
+The PCP documentation is organized as follows:
 
-* README
-* Core Concepts
-* Specification
-* RFCs
-* Reference Implementation
+* README — Project overview
+* Core Concepts — Conceptual foundation
+* Specification — Normative requirements
+* RFCs — Controlled evolution of the specification
+* Reference Implementation — Example implementation
+
+Each document has a distinct responsibility within the PCP ecosystem.
 
 ---
 
 # Appendix C — Revision History
 
-Version history of the specification.
+| Version | Description                             |
+| ------- | --------------------------------------- |
+| 0.1     | Initial draft of the PCP Specification. |
