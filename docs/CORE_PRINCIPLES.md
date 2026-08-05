@@ -20,3 +20,10 @@
 
 10. Open Evolution
 
+## Stability Before Expansion
+
+Once a specification element is accepted, it is considered stable.
+
+Changes are introduced through new RFCs, not by rewriting accepted decisions.
+
+Project history is preserved.
