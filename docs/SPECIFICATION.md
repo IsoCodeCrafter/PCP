@@ -6,9 +6,15 @@
 
 # 1. Introduction
 
-Purpose of the Project Context Protocol (PCP).
+The Project Context Protocol (PCP) defines a standardized conceptual model for preserving, organizing, and transferring project context.
 
-Background, motivation, and design goals.
+The objective of PCP is to improve project continuity by ensuring that the information required to understand, maintain, and evolve a project remains accessible and consistent across contributors, tools, and time.
+
+PCP defines concepts and normative requirements rather than implementation technologies. It is independent of programming languages, storage formats, development environments, and software tooling.
+
+The specification establishes a common foundation that enables different implementations to exchange and preserve project context while remaining interoperable at the conceptual level.
+
+The primary goal of PCP is to reduce unnecessary rediscovery of project knowledge and to enable efficient project continuation regardless of changes in contributors.
 
 ---
 
