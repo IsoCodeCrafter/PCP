@@ -47,16 +47,15 @@ These aspects are implementation decisions and are outside the scope of this spe
 
 # 3. Normative Language
 
-Interpretation of the keywords:
+The key words **MUST**, **MUST NOT**, **REQUIRED**, **SHALL**, **SHALL NOT**, **SHOULD**, **SHOULD NOT**, **RECOMMENDED**, **MAY**, and **OPTIONAL** in this specification are to be interpreted as described in RFC 2119 and RFC 8174 when, and only when, they appear in all capital letters.
 
-* MUST
-* MUST NOT
-* SHOULD
-* SHOULD NOT
-* MAY
-* OPTIONAL
+These keywords indicate the level of obligation associated with a requirement:
 
-Reference to RFC 2119 and RFC 8174.
+* **MUST / REQUIRED / SHALL** — An absolute requirement of the specification.
+* **MUST NOT / SHALL NOT** — An absolute prohibition.
+* **SHOULD / RECOMMENDED** — A strong recommendation. Valid reasons may exist to ignore a recommendation, but the implications should be fully understood.
+* **SHOULD NOT** — A strong recommendation against a particular behavior.
+* **MAY / OPTIONAL** — A truly optional behavior or feature.
 
 ---
 
