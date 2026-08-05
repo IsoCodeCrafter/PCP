@@ -20,11 +20,28 @@ The primary goal of PCP is to reduce unnecessary rediscovery of project knowledg
 
 # 2. Scope
 
-What PCP defines.
+This specification defines the conceptual and normative foundation of the Project Context Protocol (PCP).
 
-What PCP intentionally does not define.
+Specifically, this specification defines:
 
-Relationship to implementations.
+* The core concepts of PCP.
+* The normative requirements for PCP-compliant implementations.
+* The relationship between Project Context and its contributors.
+* The requirements for preserving project continuity.
+* The conformance criteria for implementations.
+
+This specification intentionally does not define:
+
+* Programming languages.
+* Storage technologies.
+* File formats.
+* Communication protocols.
+* User interfaces.
+* Development workflows.
+* Implementation-specific architectures.
+
+These aspects are implementation decisions and are outside the scope of this specification.
+.
 
 ---
 
