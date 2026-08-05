@@ -2,13 +2,49 @@
 
 This document defines the fundamental concepts of the **Project Context Protocol (PCP)**.
 
-Every normative requirement defined by the PCP Specification is based on these concepts.
+These concepts form the conceptual foundation of the PCP Specification. Every normative requirement defined elsewhere in the specification derives its meaning from the concepts defined in this document.
 
-Implementations MAY differ in structure, storage, or technology, but they MUST preserve the concepts defined in this document.
+Implementations MAY differ in structure, storage, representation, or technology, but they MUST preserve the concepts defined herein.
 
 ---
 
-# Concept Template
+# Scope
+
+This document defines the conceptual model of PCP.
+
+It intentionally does **not** define:
+
+* storage formats
+* file structures
+* implementation details
+* validation rules
+* tooling
+* transport mechanisms
+
+Those aspects are defined elsewhere in the PCP ecosystem.
+
+---
+
+# Concept Model
+
+The PCP conceptual model is built upon four foundational concepts.
+
+```text
+Project
+    │
+    ▼
+Context
+    │
+    ├──────────────┐
+    ▼              ▼
+Contributor   Project Continuity
+```
+
+All other PCP concepts are derived from these foundations.
+
+---
+
+# Concept Structure
 
 Every concept defined by PCP follows the same structure:
 
@@ -19,7 +55,7 @@ Every concept defined by PCP follows the same structure:
 * Non-Examples
 * Notes
 
-This template ensures consistency throughout the specification.
+This structure ensures consistency throughout the specification.
 
 ---
 
@@ -27,46 +63,47 @@ This template ensures consistency throughout the specification.
 
 ## Definition
 
-Context is the complete body of information required for a contributor to understand and continue a project without unnecessary rediscovery.
+Context is the complete set of information required for a contributor to understand, operate, maintain, and continue a project without unnecessary rediscovery.
 
 ## Purpose
 
-To preserve project continuity by providing a shared understanding of the project.
+To preserve project continuity through a shared understanding of the project.
 
 ## Relationships
 
 * Context belongs to a Project.
-* Context is created and maintained by Contributors.
+* Context is created, maintained, and consumed by Contributors.
 * Context enables Project Continuity.
-* Context includes Decisions, Knowledge, Current State, Architecture, and Operational Guidance.
+* Context contains Decisions, Knowledge, Current State, Architecture, Operational Guidance, and Open Work.
 
 ## Examples
 
 * Architectural decisions
-* Current project status
+* Project objectives
+* Current project state
 * Known constraints
 * Design rationale
 * Operational procedures
-* Open work items
+* Outstanding work
 
 ## Non-Examples
 
-The following are not context by themselves:
+The following artifacts do not constitute Project Context by themselves:
 
 * Source code
-* Chat history
 * Git history
+* Chat history
 * README
-* Issue tracker
+* Issue trackers
 * Prompt history
 
-These artifacts may contribute to project context but do not constitute project context on their own.
+These artifacts may contribute to Project Context but are not Project Context on their own.
 
 ## Notes
 
-Context is concept-oriented rather than file-oriented.
+Context is independent of its representation.
 
-PCP standardizes the information required to continue a project, not how that information is stored.
+Markdown documents, databases, JSON, knowledge graphs, or future technologies are implementation choices rather than conceptual requirements.
 
 ---
 
@@ -74,7 +111,7 @@ PCP standardizes the information required to continue a project, not how that in
 
 ## Definition
 
-A Contributor is any human, AI system, or automated process that creates, modifies, consumes, or maintains project context.
+A Contributor is any entity capable of creating, modifying, consuming, validating, or maintaining Project Context.
 
 ## Purpose
 
@@ -84,27 +121,29 @@ To participate in the continuous evolution of a project through a shared context
 
 * Contributors create Context.
 * Contributors consume Context.
+* Contributors maintain Context.
 * Contributors produce Decisions and Knowledge.
 * Multiple Contributors may collaborate on the same Project Context.
 
 ## Examples
 
-* Software developer
-* Project maintainer
-* AI coding assistant
-* Autonomous software agent
+* Software developers
+* Project maintainers
+* AI assistants
+* Autonomous software agents
+* Documentation systems
 * CI/CD automation
-* Documentation generator
 
 ## Non-Examples
 
-* A repository without context
+* A repository
 * A storage system
 * A programming language
+* A file format
 
 ## Notes
 
-PCP treats all contributors equally with respect to context exchange.
+PCP treats human contributors, AI systems, and automated processes as equal participants in the exchange of Project Context.
 
 ---
 
@@ -112,34 +151,38 @@ PCP treats all contributors equally with respect to context exchange.
 
 ## Definition
 
-A Project is a bounded body of work with a defined purpose and an expected continuity over time.
+A Project is a bounded initiative possessing identity, purpose, and continuity.
 
 ## Purpose
 
-To provide the scope within which project context exists.
+To define the scope within which Project Context exists.
 
 ## Relationships
 
 * A Project owns one Project Context.
 * A Project may have multiple Contributors.
-* A Project evolves through Decisions and accumulated Knowledge.
+* A Project evolves through accumulated Knowledge and Decisions.
+* A Project seeks Project Continuity.
 
 ## Examples
 
 * Open-source software
-* Commercial application
-* Internal tooling
-* Research project
+* Commercial software
+* Internal platforms
+* Research initiatives
 
 ## Non-Examples
 
-* A single source file
+* A source file
 * A single conversation
-* An isolated prompt
+* A prompt
+* A temporary task
 
 ## Notes
 
-A project may outlive its original contributors.
+A Project may outlive its original contributors.
+
+Project identity remains stable even when contributors change.
 
 ---
 
@@ -147,11 +190,11 @@ A project may outlive its original contributors.
 
 ## Definition
 
-Project Continuity is the ability of a project to continue efficiently regardless of changes in contributors.
+Project Continuity is the capability of a Project to evolve despite changes in Contributors.
 
 ## Purpose
 
-To minimize knowledge loss and reduce onboarding effort.
+To minimize knowledge loss and reduce onboarding effort while preserving long-term project evolution.
 
 ## Relationships
 
@@ -162,24 +205,28 @@ To minimize knowledge loss and reduce onboarding effort.
 ## Examples
 
 * A new developer becoming productive quickly.
-* An AI assistant continuing work without lengthy explanations.
+* An AI assistant continuing work without repeated explanations.
 * A project surviving team changes.
+* Long-term maintenance without knowledge loss.
 
 ## Non-Examples
 
-* Relying solely on personal memory.
-* Depending on a single individual.
+* Depending on personal memory.
 * Reconstructing decisions from chat history.
+* Knowledge existing only in one person's mind.
+* Restarting project understanding from scratch.
 
 ## Notes
 
 Project Continuity is the primary objective of PCP.
 
+Every concept defined by PCP ultimately exists to support Project Continuity.
+
 ---
 
-## Future Concepts
+# Future Concepts
 
-The following concepts will be defined in subsequent revisions of this document:
+The following concepts extend the PCP conceptual model and are defined separately:
 
 * Decision
 * Knowledge
@@ -189,4 +236,6 @@ The following concepts will be defined in subsequent revisions of this document:
 * Operational Guide
 * Compliance
 * Reference Implementation
+* Validator
 
+These concepts build upon the four foundational concepts defined in this document.
