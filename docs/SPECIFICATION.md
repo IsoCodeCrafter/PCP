@@ -61,17 +61,40 @@ These keywords indicate the level of obligation associated with a requirement:
 
 # 4. References
 
-Normative References
+## 4.1 Normative References
 
-* RFC 2119
-* RFC 8174
-* RFC 8259 (JSON)
-* CommonMark Specification
-* Model Context Protocol (when applicable)
+The following documents are indispensable for the application of this specification.
 
-Informative References
+### RFC 2119
 
-Additional documents and related work.
+Key words for use in RFCs to Indicate Requirement Levels.
+
+### RFC 8174
+
+Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words.
+
+---
+
+## 4.2 Informative References
+
+The following documents provide useful background information and related concepts.
+
+### CommonMark Specification
+
+Reference specification for Markdown syntax.
+
+### RFC 8259
+
+The JavaScript Object Notation (JSON) Data Interchange Format.
+
+### Model Context Protocol (MCP)
+
+Open protocol for providing context to AI systems.
+
+---
+
+Future revisions of this specification MAY reference additional standards where appropriate. Such references do not alter the conceptual model of PCP unless explicitly stated.
+
 
 ---
 
