@@ -2,11 +2,20 @@
 
 Software projects should not lose their knowledge.
 
-Context is a project asset.
+Project Context is a project asset.
 
-Project continuity should not depend on memory, conversations or a specific AI assistant.
+Project continuity should not depend on memory, conversations, individual contributors, or a specific AI system.
 
-Every contributor deserves the same starting point.
+Every contributor deserves the same starting point and the same shared understanding of a project.
 
-PCP exists to make project continuity an open standard.
+Knowledge should be preserved, not repeatedly rediscovered.
 
+Context should outlive contributors, technologies, and tools.
+
+Project Context should remain open, structured, and portable.
+
+PCP exists to make Project Continuity possible by standardizing Project Context.
+
+**Don't preserve conversations.**
+
+**Preserve context.**
