@@ -6,15 +6,15 @@
 
 # 1. Introduction
 
-The Project Context Protocol (PCP) defines a standardized conceptual model for preserving, organizing, and transferring project context.
+The Project Context Protocol (PCP) defines a standardized conceptual model for preserving, organizing, and transferring Project Context.
 
-The objective of PCP is to improve project continuity by ensuring that the information required to understand, maintain, and evolve a project remains accessible and consistent across contributors, tools, and time.
+The objective of PCP is to improve Project Continuity by ensuring that the information required to understand, maintain, and evolve a Project remains accessible and consistent across Contributors, tools, and time.
 
 PCP defines concepts and normative requirements rather than implementation technologies. It is independent of programming languages, storage formats, development environments, and software tooling.
 
-The specification establishes a common foundation that enables different implementations to exchange and preserve project context while remaining interoperable at the conceptual level.
+The specification establishes a common foundation that enables different implementations to exchange and preserve Project Context while remaining interoperable at the conceptual level.
 
-The primary goal of PCP is to reduce unnecessary rediscovery of project knowledge and to enable efficient project continuation regardless of changes in contributors.
+The primary goal of PCP is to reduce unnecessary rediscovery of project knowledge and to enable efficient Project Continuity regardless of changes in Contributors.
 
 ---
 
@@ -26,8 +26,8 @@ Specifically, this specification defines:
 
 * The core concepts of PCP.
 * The normative requirements for PCP-compliant implementations.
-* The relationship between Project Context and its contributors.
-* The requirements for preserving project continuity.
+* The relationship between Project Context and its Contributors.
+* The requirements for preserving Project Continuity.
 * The conformance criteria for implementations.
 
 This specification intentionally does not define:
@@ -41,7 +41,6 @@ This specification intentionally does not define:
 * Implementation-specific architectures.
 
 These aspects are implementation decisions and are outside the scope of this specification.
-.
 
 ---
 
@@ -91,10 +90,7 @@ The JavaScript Object Notation (JSON) Data Interchange Format.
 
 Open protocol for providing context to AI systems.
 
----
-
 Future revisions of this specification MAY reference additional standards where appropriate. Such references do not alter the conceptual model of PCP unless explicitly stated.
-
 
 ---
 
@@ -109,7 +105,7 @@ These concepts provide the semantic foundation for all normative requirements de
 The PCP conceptual model consists of the following concepts:
 
 * Project
-* Context
+* Project Context
 * Contributor
 * Project Continuity
 
@@ -120,7 +116,7 @@ No concept defined by PCP exists independently of this model.
 The relationships between the foundational concepts are defined as follows:
 
 * A **Project** provides the scope within which Project Context exists.
-* A **Context** contains the information required to understand, maintain, and continue a Project.
+* **Project Context** contains the information required to understand, maintain, and continue a Project.
 * A **Contributor** creates, maintains, validates, and consumes Project Context.
 * **Project Continuity** is achieved through the preservation and maintenance of Project Context.
 
@@ -140,9 +136,9 @@ This specification defines the normative requirements that apply to those concep
 
 ---
 
-# # 6. Project Context Model
+# 6. Project Context Model
 
-Project Context is the standardized body of information required to preserve project continuity.
+Project Context is the standardized body of information required to preserve Project Continuity.
 
 A PCP-compliant Project Context SHALL contain, at a minimum, the following conceptual components:
 
@@ -165,11 +161,11 @@ Each decision SHOULD include:
 * consequences
 * status
 * date
-* author or originating contributor
+* author or originating Contributor
 
 ## 6.2 Knowledge
 
-Knowledge captures durable information that contributors are expected to preserve beyond individual tasks.
+Knowledge captures durable information that Contributors are expected to preserve beyond individual tasks.
 
 Examples include:
 
@@ -223,27 +219,27 @@ Examples include:
 
 A PCP-compliant implementation MUST satisfy the following requirements.
 
-## R-1
+## REQ-001
 
 A Project MUST define exactly one Project Context.
 
-## R-2
+## REQ-002
 
 Project Context MUST preserve the conceptual model defined by PCP.
 
-## R-3
+## REQ-003
 
 All required conceptual components MUST be represented.
 
-## R-4
+## REQ-004
 
-Context MUST remain understandable independent of its original contributors.
+Project Context MUST remain understandable independent of its original Contributors.
 
-## R-5
+## REQ-005
 
 Implementations MUST preserve semantic equivalence when transforming or exchanging Project Context.
 
-## R-6
+## REQ-006
 
 Implementations MAY introduce additional concepts provided they do not violate PCP semantics.
 
@@ -330,12 +326,12 @@ Existing compliant implementations SHOULD remain valid unless explicitly depreca
 
 # Appendix A — Terminology
 
-| Term               | Definition                                                             |
-| ------------------ | ---------------------------------------------------------------------- |
-| Project            | A bounded initiative possessing identity, purpose, and continuity.     |
-| Context            | The information required to continue a Project.                        |
-| Contributor        | Any entity capable of producing or consuming Project Context.          |
-| Project Continuity | The capability of a Project to evolve despite changes in Contributors. |
+| Term               | Definition                                                                |
+| ------------------ | ------------------------------------------------------------------------- |
+| Project            | A bounded initiative possessing identity, purpose, and continuity.        |
+| Project Context    | The information required to understand, maintain, and continue a Project. |
+| Contributor        | Any entity capable of producing or consuming Project Context.             |
+| Project Continuity | The capability of a Project to evolve despite changes in Contributors.    |
 
 ---
 
@@ -343,13 +339,13 @@ Existing compliant implementations SHOULD remain valid unless explicitly depreca
 
 The PCP documentation is organized as follows:
 
-* README — Project overview
-* Core Concepts — Conceptual foundation
-* Specification — Normative requirements
-* RFCs — Controlled evolution of the specification
-* Reference Implementation — Example implementation
+* `README.md` — Project overview
+* `docs/CORE_CONCEPTS.md` — Conceptual foundation
+* `docs/SPECIFICATION.md` — Normative requirements
+* `rfcs/` — Controlled evolution of the specification
+* `docs/REFERENCE_IMPLEMENTATION.md` — Example implementation
 
-Each document has a distinct responsibility within the PCP ecosystem.
+Each document has a distinct responsibility within the PCP documentation.
 
 ---
 

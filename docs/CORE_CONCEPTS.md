@@ -2,7 +2,7 @@
 
 This document defines the fundamental concepts of the **Project Context Protocol (PCP)**.
 
-These concepts form the conceptual foundation of the PCP Specification. Every normative requirement defined elsewhere in the specification derives its meaning from the concepts defined in this document.
+These concepts define the conceptual foundation of PCP. Every normative requirement in the PCP Specification derives its meaning from the concepts defined in this document.
 
 Implementations MAY differ in structure, storage, representation, or technology, but they MUST preserve the concepts defined herein.
 
@@ -21,7 +21,7 @@ It intentionally does **not** define:
 * tooling
 * transport mechanisms
 
-Those aspects are defined elsewhere in the PCP ecosystem.
+Those aspects are defined elsewhere in the PCP Specification and its reference materials.
 
 ---
 
@@ -33,7 +33,7 @@ The PCP conceptual model is built upon four foundational concepts.
 Project
     │
     ▼
-Context
+Project Context
     │
     ├──────────────┐
     ▼              ▼
@@ -59,22 +59,22 @@ This structure ensures consistency throughout the specification.
 
 ---
 
-# Context
+# Project Context
 
 ## Definition
 
-Context is the complete set of information required for a contributor to understand, operate, maintain, and continue a project without unnecessary rediscovery.
+Project Context is the complete set of information required for a contributor to understand, operate, maintain, and continue a project without unnecessary rediscovery.
 
 ## Purpose
 
-To preserve project continuity through a shared understanding of the project.
+To preserve Project Continuity through a shared understanding of the project.
 
 ## Relationships
 
-* Context belongs to a Project.
-* Context is created, maintained, and consumed by Contributors.
-* Context enables Project Continuity.
-* Context contains Decisions, Knowledge, Current State, Architecture, Operational Guidance, and Open Work.
+* Project Context belongs to a Project.
+* Project Context is created, maintained, and consumed by Contributors.
+* Project Context enables Project Continuity.
+* Project Context may contain Decisions, Knowledge, Current State, Architecture, Operational Guidance, and Open Work.
 
 ## Examples
 
@@ -101,7 +101,7 @@ These artifacts may contribute to Project Context but are not Project Context on
 
 ## Notes
 
-Context is independent of its representation.
+Project Context is independent of its representation.
 
 Markdown documents, databases, JSON, knowledge graphs, or future technologies are implementation choices rather than conceptual requirements.
 
@@ -115,13 +115,13 @@ A Contributor is any entity capable of creating, modifying, consuming, validatin
 
 ## Purpose
 
-To participate in the continuous evolution of a project through a shared context.
+To participate in the continuous evolution of a project through a shared Project Context.
 
 ## Relationships
 
-* Contributors create Context.
-* Contributors consume Context.
-* Contributors maintain Context.
+* Contributors create Project Context.
+* Contributors consume Project Context.
+* Contributors maintain Project Context.
 * Contributors produce Decisions and Knowledge.
 * Multiple Contributors may collaborate on the same Project Context.
 
@@ -198,8 +198,8 @@ To minimize knowledge loss and reduce onboarding effort while preserving long-te
 
 ## Relationships
 
-* Project Continuity depends on Context.
-* Contributors preserve Project Continuity by maintaining Context.
+* Project Continuity depends on Project Context.
+* Contributors preserve Project Continuity by maintaining Project Context.
 * PCP exists to improve Project Continuity.
 
 ## Examples

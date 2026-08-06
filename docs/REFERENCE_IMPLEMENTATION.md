@@ -6,7 +6,7 @@ The Reference Implementation provides a concrete example of a Project Context Pr
 
 Its purpose is to demonstrate how the concepts and normative requirements defined by the PCP Specification can be realized in practice.
 
-The Reference Implementation is intended to improve understanding, interoperability, and adoption of PCP.
+The Reference Implementation improves understanding, interoperability, and adoption by illustrating one valid realization of PCP.
 
 ---
 
@@ -14,7 +14,7 @@ The Reference Implementation is intended to improve understanding, interoperabil
 
 The Reference Implementation illustrates one valid implementation of PCP.
 
-It does not restrict alternative implementations.
+It is an example rather than a prescribed solution and does not restrict alternative implementations.
 
 Implementations MAY differ in:
 
@@ -25,7 +25,7 @@ Implementations MAY differ in:
 * Tooling
 * Automation
 
-provided that they preserve the concepts and normative requirements defined by the PCP Specification.
+provided that they preserve the concepts, semantic relationships, and normative requirements defined by the PCP Specification.
 
 ---
 
@@ -36,10 +36,10 @@ The Reference Implementation SHALL:
 * Preserve all foundational PCP concepts.
 * Preserve semantic relationships.
 * Follow the PCP Specification.
-* Demonstrate recommended project organization.
-* Serve as an educational example.
+* Demonstrate a recommended organization of Project Context.
+* Serve as an educational and interoperable example.
 
-The Reference Implementation SHALL NOT introduce additional normative requirements beyond the PCP Specification.
+The Reference Implementation SHALL NOT introduce additional normative requirements beyond those defined by the PCP Specification.
 
 ---
 
@@ -51,7 +51,7 @@ The Reference Implementation is informative.
 
 Where conflicts exist, the PCP Specification takes precedence.
 
-Implementations are compliant by conforming to the Specification, not by copying the Reference Implementation.
+Implementations achieve compliance by conforming to the PCP Specification, not by reproducing the Reference Implementation.
 
 ---
 
@@ -59,15 +59,14 @@ Implementations are compliant by conforming to the Specification, not by copying
 
 A typical Reference Implementation MAY include:
 
-* Project overview
-* Core concepts
+* Project Context
 * Decision Log
 * Knowledge
 * Architecture
 * Operational Guide
 * Open Work
 
-The exact directory structure is implementation-specific.
+The exact directory structure remains implementation-specific.
 
 ---
 
@@ -84,13 +83,13 @@ Examples include:
 * Cloud-native services
 * AI-native context stores
 
-All implementations are considered equally valid if they satisfy the PCP Specification.
+All implementations are considered equally valid provided they satisfy the PCP Specification.
 
 ---
 
 # Versioning
 
-The Reference Implementation SHOULD indicate the PCP Specification version with which it is compatible.
+The Reference Implementation SHOULD indicate the version of the PCP Specification with which it is compatible.
 
 Example:
 
@@ -105,7 +104,6 @@ Reference Implementation: 1.0
 
 The Reference Implementation is expected to satisfy the highest available PCP compliance level.
 
-It serves as the primary reference for interoperability testing, examples, and educational material.
+It serves as the primary reference for interoperability testing, educational material, and implementation examples.
 
-It is not the only valid implementation of PCP.
-
+The Reference Implementation demonstrates one valid implementation of PCP; it is not the only compliant implementation.
