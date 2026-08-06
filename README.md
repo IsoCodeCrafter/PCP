@@ -8,7 +8,7 @@ PCP (**Project Context Protocol**) is an open standard for preserving, organizin
 
 ---
 
-## Why PCP?
+# Why PCP?
 
 Software projects lose continuity every day.
 
@@ -28,9 +28,75 @@ As projects grow, context becomes scattered across documentation, source code, i
 
 ---
 
-## What is PCP?
+# 🚀 Start Here
 
-PCP defines a shared project context standard.
+Choose the path that best matches your goal.
+
+## I want to understand PCP (5 minutes)
+
+1. Read **VISION.md**
+2. Read **MANIFESTO.md**
+3. Read **docs/CORE_PRINCIPLES.md**
+
+---
+
+## I want to learn the concepts (10 minutes)
+
+1. Read **docs/CORE_CONCEPTS.md**
+2. Read **docs/SPECIFICATION.md**
+
+---
+
+## I want to use PCP in my own project (10 minutes)
+
+1. Open **reference/context-template/**
+2. Copy the template into your project.
+3. Start maintaining your Project Context.
+
+---
+
+## I want to see a complete example (5 minutes)
+
+Open:
+
+```text
+examples/simple-project/
+```
+
+See how a complete Project Context evolves throughout a real software project.
+
+---
+
+## I want to contribute
+
+Read:
+
+```text
+docs/OPEN_WORK.md
+```
+
+to discover current priorities and ongoing work.
+
+---
+
+# Repository Guide
+
+| Goal                       | Location                      |
+| -------------------------- | ----------------------------- |
+| Understand the vision      | `VISION.md`                   |
+| Understand the philosophy  | `MANIFESTO.md`                |
+| Learn the principles       | `docs/CORE_PRINCIPLES.md`     |
+| Learn the concepts         | `docs/CORE_CONCEPTS.md`       |
+| Read the specification     | `docs/SPECIFICATION.md`       |
+| Copy the official template | `reference/context-template/` |
+| Explore a working example  | `examples/simple-project/`    |
+| See open work              | `docs/OPEN_WORK.md`           |
+
+---
+
+# What is PCP?
+
+PCP defines a shared Project Context standard.
 
 Instead of teaching every AI system how your project works, PCP standardizes the information surrounding the project itself.
 
@@ -46,13 +112,13 @@ to work from the same understanding of a project.
 
 ---
 
-## The Core Idea
+# The Core Idea
 
 Software projects should not depend on memory.
 
 They should depend on shared context.
 
-PCP creates a single, structured project context that survives:
+PCP creates a single, structured Project Context that survives:
 
 * contributor changes
 * AI model changes
@@ -68,7 +134,7 @@ Every contributor.
 
 ---
 
-## Core Principles
+# Core Principles
 
 * Context over conversations
 * Continuity over memory
@@ -80,7 +146,7 @@ Every contributor.
 
 ---
 
-## How PCP Works
+# How PCP Works
 
 ```text
 Contributor
@@ -95,18 +161,18 @@ Next Contributor
 Project Continuity
 ```
 
-Every contributor reads from the same project context.
+Every contributor reads from the same Project Context.
 
 Every contributor leaves the project with better context than they found.
 
 ---
 
-## What PCP Is
+# What PCP Is
 
 PCP is:
 
 * An open standard
-* A project context protocol
+* A Project Context Protocol
 * A continuity-first approach to software development
 * Human and AI friendly
 * Technology independent
@@ -114,7 +180,7 @@ PCP is:
 
 ---
 
-## What PCP Is Not
+# What PCP Is Not
 
 PCP is **not**:
 
@@ -130,7 +196,7 @@ PCP standardizes **context**, not intelligence, tools, or workflows.
 
 ---
 
-## Reference Implementation
+# Reference Implementation
 
 This repository contains the official reference implementation of PCP.
 
@@ -140,11 +206,11 @@ Alternative implementations may use different file formats, databases, or storag
 
 **The specification defines concepts.**
 
-**Reference implementations define concrete implementations.**
+**Reference implementations demonstrate practical implementations.**
 
 ---
 
-## Repository Structure
+# Repository Structure
 
 ```text
 docs/           Specifications and documentation
@@ -157,22 +223,21 @@ scripts/        Development utilities
 
 ---
 
-## Project Status
+# Project Status
 
 > ⚠️ **Active Design**
 
 PCP is currently in the specification phase.
 
-At this stage, the priority is building a stable conceptual foundation rather than delivering features quickly.
-
-A stable standard lasts longer than a fast implementation.
+The priority is building a stable conceptual foundation before developing tooling and integrations.
 
 ---
 
-## Roadmap
+# Roadmap
 
 * Complete PCP Specification v0.1
-* Define Core Concepts
+* Publish Reference Context Template
+* Expand example projects
 * Build the Compliance Validator
 * Develop the PCP CLI
 * Publish VS Code integration
@@ -181,17 +246,17 @@ A stable standard lasts longer than a fast implementation.
 
 ---
 
-## Vision
+# Vision
 
 We believe software projects should be able to continue regardless of who—or what—takes over.
 
 Project continuity should not depend on memory.
 
-It should depend on a shared, structured, and portable project context.
+It should depend on a shared, structured, and portable Project Context.
 
 ---
 
-## Philosophy
+# Philosophy
 
 **Don't preserve conversations.**
 
@@ -199,6 +264,6 @@ It should depend on a shared, structured, and portable project context.
 
 ---
 
-## License
+# License
 
 MIT License.
