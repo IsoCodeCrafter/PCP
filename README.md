@@ -45,12 +45,12 @@ As projects grow, context becomes scattered across documentation, source code, i
 
 ### 1. Initialize Context in Any Repository
 ```bash
-npx pcp-cli init --name "My Project"
+npx @craftsolutions/pcp init --name "My Project"
 ```
 
 ### 2. Verify Context Integrity (Linter)
 ```bash
-npx pcp-cli check
+npx @craftsolutions/pcp check
 ```
 
 ### 3. Connect to AI Assistants via MCP (Cursor / Claude / Antigravity)
@@ -60,7 +60,7 @@ Add this to your IDE's MCP configuration:
   "mcpServers": {
     "pcp": {
       "command": "npx",
-      "args": ["-y", "pcp-cli", "mcp"]
+      "args": ["-y", "@craftsolutions/pcp", "mcp"]
     }
   }
 }

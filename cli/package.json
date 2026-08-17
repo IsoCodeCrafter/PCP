@@ -1,6 +1,6 @@
 {
-  "name": "pcp-cli",
-  "version": "0.1.0",
+  "name": "@craftsolutions/pcp",
+  "version": "0.1.1",
   "description": "Standardize Context, Not Intelligence. Official CLI & MCP Server for Project Context Protocol (PCP)",
   "main": "bin/pcp.js",
   "bin": {
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/IsoCodeCrafter/PCP.git"
+    "url": "git+https://github.com/IsoCodeCrafter/PCP.git"
   },
   "homepage": "https://github.com/IsoCodeCrafter/PCP#readme",
   "bugs": {
@@ -40,8 +40,11 @@
     "context-management",
     "developer-tools"
   ],
-  "author": "IsoCodeCrafter",
+  "author": "IsoCodeCrafter (CraftSolutions)",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.30.0",
     "yaml": "^2.7.0"
