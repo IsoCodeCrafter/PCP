@@ -83,7 +83,7 @@ Bu belgeler hem **bir insanın rahatça okuyabileceği sade Markdown** formatın
 ### 1. Adım: Projenize Ekleyin (1 Saniye)
 Terminalinizde projenizin klasörüne gidin ve şunu çalıştırın:
 ```bash
-npx @pcp/cli init --name "Harika Uygulamam"
+npx pcp-cli init --name "Harika Uygulamam"
 ```
 *(Projenizde anında standart `context/` yapısı kurulur.)*
 
@@ -96,7 +96,7 @@ Kullandığınız AI editörünün MCP ayarlarına şu satırları ekleyin:
   "mcpServers": {
     "pcp": {
       "command": "npx",
-      "args": ["-y", "@pcp/cli", "mcp"]
+      "args": ["-y", "pcp-cli", "mcp"]
     }
   }
 }
@@ -115,6 +115,6 @@ Yapay zeka doğrudan `KNOWLEDGE.md` ve `ARCHITECTURE.md` dosyalarını okur, kur
 ### 4. Adım: Sağlamlığını Test Edin (Linter)
 İstediğiniz zaman terminalden tek bir komutla bağlamınızı doğrulayın:
 ```bash
-npx @pcp/cli check
+npx pcp-cli check
 ```
 *(Eğer her şey kuralına uygunsa yeşil bir **`✔ All PCP checks PASSED`** onayı alırsınız!)*

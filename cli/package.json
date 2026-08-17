@@ -1,24 +1,46 @@
 {
-  "name": "@pcp/cli",
+  "name": "pcp-cli",
   "version": "0.1.0",
-  "description": "Official CLI tool for Project Context Protocol (PCP)",
+  "description": "Standardize Context, Not Intelligence. Official CLI & MCP Server for Project Context Protocol (PCP)",
   "main": "bin/pcp.js",
   "bin": {
-    "pcp": "bin/pcp.js"
+    "pcp": "bin/pcp.js",
+    "pcp-cli": "bin/pcp.js"
   },
+  "files": [
+    "bin",
+    "src",
+    "templates",
+    "README.md",
+    "LICENSE"
+  ],
   "type": "module",
   "scripts": {
     "check": "node bin/pcp.js check",
-    "init": "node bin/pcp.js init"
+    "init": "node bin/pcp.js init",
+    "mcp": "node bin/pcp.js mcp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IsoCodeCrafter/PCP.git"
+  },
+  "homepage": "https://github.com/IsoCodeCrafter/PCP#readme",
+  "bugs": {
+    "url": "https://github.com/IsoCodeCrafter/PCP/issues"
   },
   "keywords": [
     "pcp",
     "project-context-protocol",
-    "ai-context",
-    "context-standard",
+    "mcp",
+    "mcp-server",
+    "model-context-protocol",
+    "ai-coding",
+    "cursor",
+    "claude",
+    "context-management",
     "developer-tools"
   ],
-  "author": "PCP Core Contributors",
+  "author": "IsoCodeCrafter",
   "license": "MIT",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.30.0",

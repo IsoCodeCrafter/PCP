@@ -74,7 +74,7 @@ Documents are written in **clean human-readable Markdown**, supplemented with st
 
 ### 1. Initialize Context in Your Project
 ```bash
-npx @pcp/cli init --name "My Awesome App"
+npx pcp-cli init --name "My Awesome App"
 ```
 
 ### 2. Connect Your AI Assistant via MCP (Cursor / Claude / Antigravity)
@@ -84,7 +84,7 @@ Add this to your editor's MCP settings:
   "mcpServers": {
     "pcp": {
       "command": "npx",
-      "args": ["-y", "@pcp/cli", "mcp"]
+      "args": ["-y", "pcp-cli", "mcp"]
     }
   }
 }
@@ -98,6 +98,6 @@ The AI reads `KNOWLEDGE.md`, writes compliant code, and prepares a standard `DEC
 
 ### 4. Verify Context Conformance
 ```bash
-npx @pcp/cli check
+npx pcp-cli check
 ```
 *(Returns exit code `0` and a green confirmation when all schema and reference integrity checks pass!)*

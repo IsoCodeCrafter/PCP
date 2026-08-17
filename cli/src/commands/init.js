@@ -7,8 +7,11 @@ import yaml from "yaml";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Path to official reference template
-const TEMPLATE_DIR = path.resolve(__dirname, "../../../reference/context-template/context");
+// Path to bundled template or repo reference template
+const BUNDLED_TEMPLATE_DIR = path.resolve(__dirname, "../../templates/context");
+const REPO_TEMPLATE_DIR = path.resolve(__dirname, "../../../reference/context-template/context");
+const TEMPLATE_DIR = fs.existsSync(BUNDLED_TEMPLATE_DIR) ? BUNDLED_TEMPLATE_DIR : REPO_TEMPLATE_DIR;
+
 
 /**
  * Initializes a new PCP context structure in the target project.
