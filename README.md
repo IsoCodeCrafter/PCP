@@ -30,52 +30,47 @@ As projects grow, context becomes scattered across documentation, source code, i
 
 # 🚀 Start Here
 
-Choose the path that best matches your goal.
-
-## I want to understand PCP (5 minutes)
-
-1. Read **VISION.md**
-2. Read **MANIFESTO.md**
-3. Read **docs/CORE_PRINCIPLES.md**
+> 📖 **New to PCP?** Read our practical beginner guides:
+> * 🇹🇷 [Türkçe Rehber (5 Dakikada PCP)](docs/GUIDE_TR.md)
+> * 🇬🇧 [PCP Explained for AI Developers](docs/PCP_EXPLAINED.md)
 
 ---
 
-## I want to learn the concepts (10 minutes)
+## ⚡ Quickstart (CLI & MCP)
 
-1. Read **docs/CORE_CONCEPTS.md**
-2. Read **docs/SPECIFICATION.md**
-
----
-
-## I want to use PCP in my own project (10 minutes)
-
-1. Open **reference/context-template/**
-2. Copy the template into your project.
-3. Start maintaining your Project Context.
-
----
-
-## I want to see a complete example (5 minutes)
-
-Open:
-
-```text
-examples/simple-project/
+### 1. Initialize Context in Any Repository
+```bash
+npx @pcp/cli init --name "My Project"
 ```
 
-See how a complete Project Context evolves throughout a real software project.
+### 2. Verify Context Integrity (Linter)
+```bash
+npx @pcp/cli check
+```
+
+### 3. Connect to AI Assistants via MCP (Cursor / Claude / Antigravity)
+Add this to your IDE's MCP configuration:
+```json
+{
+  "mcpServers": {
+    "pcp": {
+      "command": "npx",
+      "args": ["-y", "@pcp/cli", "mcp"]
+    }
+  }
+}
+```
 
 ---
 
-## I want to contribute
+# 🔍 Why PCP vs Other Solutions?
 
-Read:
-
-```text
-docs/OPEN_WORK.md
-```
-
-to discover current priorities and ongoing work.
+| Solution | Limitation | PCP Advantage |
+| :--- | :--- | :--- |
+| **README.md** | Surface-level landing page; lacks structured decision logs and rules. | 6 mandatory deep-context components. |
+| **Notion / Jira** | External to code repository; AI cannot query it while coding. | Lives directly in the Git repository alongside code. |
+| **.cursorrules** | Locked to Cursor; useless in Claude Desktop, VS Code, etc. | Universal open standard working across all AI tools. |
+| **MCP** | MCP is the **pipe** (transport). | PCP is the **standard context payload** flowing through that pipe. |
 
 ---
 
@@ -83,11 +78,15 @@ to discover current priorities and ongoing work.
 
 | Goal                       | Location                      |
 | -------------------------- | ----------------------------- |
+| 🇹🇷 Türkçe Tanıtım Rehberi   | `docs/GUIDE_TR.md`            |
+| 🇬🇧 Practical Guide         | `docs/PCP_EXPLAINED.md`       |
 | Understand the vision      | `VISION.md`                   |
 | Understand the philosophy  | `MANIFESTO.md`                |
 | Learn the principles       | `docs/CORE_PRINCIPLES.md`     |
 | Learn the concepts         | `docs/CORE_CONCEPTS.md`       |
 | Read the specification     | `docs/SPECIFICATION.md`       |
+| Accepted RFCs              | `rfcs/RFC-0001-Core-Context-Model.md` |
+| Official CLI & MCP Server  | `cli/`                        |
 | Copy the official template | `reference/context-template/` |
 | Explore a working example  | `examples/simple-project/`    |
 | See open work              | `docs/OPEN_WORK.md`           |
