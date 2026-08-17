@@ -158,9 +158,23 @@ PCP/
 - [x] **[Faz 1 - RFC-0001]:** Canonical Giriş Noktası (`context/manifest.yaml`) ve Hibrit YAML Frontmatter Metadata Şeması kabul edildi (`rfcs/RFC-0001-Core-Context-Model.md`).
 - [x] **[Faz 1 - Referans Şablon]:** `reference/context-template/` şablonu RFC-0001 standardına uyarlandı (`manifest.yaml` ve frontmatter şablonları eklendi).
 - [x] **[Faz 1 - Dogfooding]:** PCP reposunun kendi yaşayan bağlamı bizzat PCP standardıyla kuruldu (`context/` dizini).
-- [x] **[Faz 2 - CLI MVP]:** Node.js tabanlı `@pcp/cli` geliştirildi, `pcp init` ve `pcp check` komutları tamamlandı ve 12 bileşen üzerinde başarıyla test edildi (`npm link` ile global hale getirildi).
+- [x] **[Faz 2 - CLI MVP]:** Node.js tabanlı `@craftsolutions/pcp` geliştirildi, `pcp init` ve `pcp check` komutları tamamlandı ve 12 bileşen üzerinde başarıyla test edildi.
 - [x] **[Faz 3 - Agent Interface]:** PCP MCP Server (`pcp mcp`) tamamlandı. 5 MCP aracı (`pcp_get_manifest`, `pcp_read_component`, `pcp_search_context`, `pcp_check_integrity`, `pcp_propose_entry`) ve 6 kaynak (`context://`) canlı stdio JSON-RPC protokolü üzerinden başarıyla doğrulandı.
 - [x] **[Faz 4 - CI & Ecosystem]:** GitHub Actions CI iş akışı (`.github/workflows/pcp-check.yml`) kuruldu. Pull Request ve Push işlemlerinde otomatik `pcp check` denetimi devrede.
+- [x] **[Dokümantasyon & Başlangıç Rehberleri]:** Türkçe ([docs/GUIDE_TR.md](file:///Users/maciso/PROJELER/PCP/docs/GUIDE_TR.md)) ve İngilizce ([docs/PCP_EXPLAINED.md](file:///Users/maciso/PROJELER/PCP/docs/PCP_EXPLAINED.md)) yapay zeka geliştiricileri için PCP anlatı kılavuzları hazırlandı.
+- [x] **[Vitrin & Badges]:** [README.md](file:///Users/maciso/PROJELER/PCP/README.md) profesyonel CI, License, MCP ve Node.js rozetleri, hızlı başlangıç adımları ve karşılaştırma tablosu ile güncellendi.
+- [x] **[NPM Lansmanı]:** `@craftsolutions/pcp@0.1.1` paketi tüm şablon ve CLI bağımlılıkları gömülü olarak npmjs.com üzerinde canlıya alındı (`npx @craftsolutions/pcp init` desteği sağlandı).
+- [x] **[Açık Kaynak & Görünürlük]:** GitHub reposu public hale getirildi, [Dockerfile](file:///Users/maciso/PROJELER/PCP/Dockerfile) otomatik doğrulama altyapısı eklendi.
+- [x] **[Topluluk Dağıtımı & Dizin Başvuruları]:**
+  - Reddit Weekly Self-Promotion başlığında resmi topluluk duyurusu yapıldı.
+  - Glama MCP Server dizinine başvuru yapıldı ve otomatik test kuyruğuna alındı.
+  - `punkpeye/awesome-mcp-servers` reposuna resmi Pull Request açılarak Glama rozeti ve standart etiketlerle (`🎖️ 📇 🏠 🍎 🪟 🐧`) formatlandı.
+
+### Sıradaki Adımlar (Next Horizon):
+- [ ] Glama otomatik inceleme ve skor rozetinin onaylanması.
+- [ ] Awesome-MCP PR birleştirilmesinin (merge) takip edilmesi.
+- [ ] Hacker News ("Show HN") ve Reddit tartışma lansmanlarının yapılması.
+
 
 
 
