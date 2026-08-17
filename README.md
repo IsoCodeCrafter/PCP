@@ -1,4 +1,9 @@
-# PCP
+# PCP (Project Context Protocol)
+
+[![CI Status](https://github.com/IsoCodeCrafter/PCP/actions/workflows/pcp-check.yml/badge.svg)](https://github.com/IsoCodeCrafter/PCP/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![MCP Compatible](https://img.shields.io/badge/MCP-Compatible-blue.svg)](https://modelcontextprotocol.io)
+[![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18.0.0-green.svg)](https://nodejs.org)
 
 ## **Standardize Context, Not Intelligence.**
 
