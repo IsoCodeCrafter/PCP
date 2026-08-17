@@ -1,0 +1,30 @@
+{
+  "name": "@pcp/cli",
+  "version": "0.1.0",
+  "description": "Official CLI tool for Project Context Protocol (PCP)",
+  "main": "bin/pcp.js",
+  "bin": {
+    "pcp": "bin/pcp.js"
+  },
+  "type": "module",
+  "scripts": {
+    "check": "node bin/pcp.js check",
+    "init": "node bin/pcp.js init"
+  },
+  "keywords": [
+    "pcp",
+    "project-context-protocol",
+    "ai-context",
+    "context-standard",
+    "developer-tools"
+  ],
+  "author": "PCP Core Contributors",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "yaml": "^2.7.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

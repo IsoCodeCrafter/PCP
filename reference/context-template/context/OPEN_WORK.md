@@ -10,147 +10,60 @@ The purpose of this document is to ensure that unfinished work remains visible a
 
 # Work Item Template
 
-## Identifier
-
-```text
-WORK-0001
-```
-
+```markdown
 ---
-
-## Title
-
-```text
-Short descriptive title
-```
-
----
-
-## Status
-
-```text
-Open
-In Progress
-Blocked
-Completed
-Cancelled
-```
-
----
-
-## Priority
-
-```text
-Critical
-High
-Medium
-Low
-```
-
+id: "WORK-0001"
+title: "Short descriptive title"
+status: "open" # open | in_progress | blocked | completed | cancelled
+priority: "high" # critical | high | medium | low
+owner: "unassigned"
+created_at: "YYYY-MM-DD"
+updated_at: "YYYY-MM-DD"
+target_version: "v1.0"
+tags: ["cli", "mvp"]
+dependencies: ["DEC-0001", "ARCH-0001"]
 ---
 
 ## Description
-
-Describe the work that needs to be completed.
-
-Clearly define the expected outcome.
-
----
+Describe the work that needs to be completed. Clearly define the expected outcome.
 
 ## Rationale
+Explain why this work is important for project progress.
 
-Explain why this work is important.
+## Implementation Notes
+Include technical notes, checklist, or test conditions.
 
----
-
-## Dependencies
-
-Reference related items when applicable.
-
-Examples:
-
-```text
-WORK-0004
-DEC-0002
-KN-0007
-```
-
----
-
-## Owner
-
-Identify the current responsible contributor.
-
-If no owner exists, record:
-
-```text
-Unassigned
-```
-
----
-
-## Target Version
-
-Optionally specify the intended milestone or release.
-
-Example:
-
-```text
-PCP 1.0
+## Related Items
+* `WORK-0000`
 ```
 
 ---
 
 # Example
 
-## Identifier
-
-```text
-WORK-0001
-```
-
-## Title
-
-```text
-Define Validation Rules
-```
-
-## Status
-
-```text
-Open
-```
-
-## Priority
-
-```text
-High
-```
+---
+id: "WORK-0001"
+title: "Define Validation Rules and CLI Check"
+status: "open"
+priority: "high"
+owner: "unassigned"
+created_at: "2026-08-17"
+updated_at: "2026-08-17"
+target_version: "v0.2"
+tags: ["tooling", "compliance"]
+dependencies: ["DEC-0001", "ARCH-0001"]
+---
 
 ## Description
-
-Define a validation model for verifying PCP-compliant implementations.
+Implement a deterministic validation command (`pcp check`) that parses `manifest.yaml` and verifies that all component files and frontmatters satisfy schema constraints.
 
 ## Rationale
+Automated validation guarantees that the project context never enters a corrupted or drifted state.
 
-Validation rules improve interoperability and enable automated compliance checks.
+## Implementation Notes
+* Verify manifest presence.
+* Validate YAML Frontmatter of every Markdown file.
+* Check for broken reference IDs.
 
-## Dependencies
-
-```text
-COMPLIANCE.md
-REFERENCE_IMPLEMENTATION.md
-```
-
-## Owner
-
-```text
-Unassigned
-```
-
-## Target Version
-
-```text
-PCP 1.0
-```
-
+## Related Items
+* `DEC-0001`

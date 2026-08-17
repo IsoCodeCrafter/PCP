@@ -8,151 +8,71 @@ Each decision should explain **what** was decided, **why** it was decided, and *
 
 # Decision Template
 
-## Identifier
-
-```
-DEC-0001
-```
-
+```markdown
 ---
-
-## Title
-
-```
-Short descriptive title
-```
-
----
-
-## Status
-
-```
-Proposed | Accepted | Rejected | Deprecated | Superseded
-```
-
----
-
-## Date
-
-```
-YYYY-MM-DD
-```
-
----
-
-## Contributors
-
-```
-Human
-AI Assistant
-Automation
-```
-
+id: "DEC-0001"
+title: "Short descriptive title"
+status: "accepted" # proposed | accepted | rejected | deprecated | superseded
+date: "YYYY-MM-DD"
+contributors: ["Human", "AI Assistant"]
+supersedes: null
+superseded_by: null
+tags: ["architecture", "storage"]
+dependencies: ["ARCH-0001"]
 ---
 
 ## Context
-
 Describe the problem or situation that required a decision.
 
----
-
 ## Decision
-
 Describe the decision that was made.
 
----
-
 ## Rationale
-
 Explain why this solution was selected instead of other alternatives.
 
----
-
 ## Consequences
-
-Describe the expected impact of the decision.
-
-Include both positive and negative consequences where appropriate.
-
----
+Describe the expected impact of the decision (benefits, trade-offs, limitations).
 
 ## Alternatives Considered
-
-List important alternatives that were evaluated.
-
----
+* Alternative A: Reason rejected.
+* Alternative B: Reason rejected.
 
 ## Related Decisions
-
-Reference other decision identifiers if applicable.
-
-Example:
-
-```
-DEC-0003
-DEC-0008
+* `DEC-0000`
 ```
 
 ---
 
 # Example
 
-## Identifier
-
-```
-DEC-0001
-```
-
-## Title
-
-```
-Adopt Markdown as the Reference Context Format
-```
-
-## Status
-
-```
-Accepted
-```
-
-## Date
-
-```
-2026-08-05
-```
-
-## Contributors
-
-```
-Human
-AI Assistant
-```
+---
+id: "DEC-0001"
+title: "Adopt Markdown as the Reference Implementation Format"
+status: "accepted"
+date: "2026-08-05"
+contributors: ["Human", "AI Assistant"]
+supersedes: null
+superseded_by: null
+tags: ["storage", "reference-implementation"]
+dependencies: ["ARCH-0001"]
+---
 
 ## Context
-
-A portable, human-readable format was required for the reference implementation.
+A portable, human-readable, and version-controlled format was required for the official reference implementation.
 
 ## Decision
-
-Markdown was selected as the primary reference format.
+Markdown with structured YAML Frontmatter was selected as the primary reference format.
 
 ## Rationale
-
-Markdown is simple, version-control friendly, and widely supported.
+Markdown is human-readable, git-friendly, and universally supported across tooling. YAML Frontmatter provides deterministic machine validation without sacrificing readability.
 
 ## Consequences
-
-The reference implementation becomes easier to maintain and review.
+* High transparency and simple code reviews in Git.
+* Requires linter tooling to validate frontmatter structure.
 
 ## Alternatives Considered
-
-* JSON
-* YAML
-* Database
+* **Pure JSON / YAML:** Poor for long-form narrative explanations.
+* **SQLite / Embedded DB:** Binary files complicate Git pull request reviews.
 
 ## Related Decisions
-
-```
 None
-```
-

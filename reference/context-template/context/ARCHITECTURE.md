@@ -10,115 +10,69 @@ Focus on concepts, responsibilities, boundaries, and relationships rather than i
 
 # Architecture Entry Template
 
-## Identifier
-
-```text
-ARCH-0001
-```
-
+```markdown
 ---
-
-## Title
-
-```text
-Short descriptive title
-```
-
+id: "ARCH-0001"
+title: "Short descriptive title"
+status: "active"
+created_at: "YYYY-MM-DD"
+updated_at: "YYYY-MM-DD"
+tags: ["core", "structure"]
+dependencies: []
 ---
 
 ## Objective
-
 Describe the purpose of this architectural element.
 
----
-
 ## Overview
-
-Provide a high-level explanation.
-
-Focus on responsibilities rather than implementation.
-
----
+Provide a high-level explanation. Focus on responsibilities rather than implementation.
 
 ## Components
-
-List the major components involved.
-
-For each component include:
-
-* Name
-* Responsibility
-* Relationships
-
----
+List the major components involved:
+* **Component A:** Responsibility and interactions.
+* **Component B:** Responsibility and interactions.
 
 ## Dependencies
-
-Describe important dependencies.
-
-Include both internal and external dependencies where appropriate.
-
----
+Describe important dependencies (both internal and external).
 
 ## Constraints
-
-Document architectural constraints.
-
-Examples:
-
-* Technology independence
-* Performance
-* Security
-* Compatibility
-* Scalability
-
----
+Document architectural constraints (e.g., technology independence, latency, security).
 
 ## Future Evolution
-
 Describe expected future architectural changes, if known.
+```
 
 ---
 
 # Example
 
-## Identifier
-
-```text
-ARCH-0001
-```
-
-## Title
-
-```text
-Project Context Lifecycle
-```
+---
+id: "ARCH-0001"
+title: "Project Context Lifecycle"
+status: "active"
+created_at: "2026-08-17"
+updated_at: "2026-08-17"
+tags: ["core", "lifecycle"]
+dependencies: []
+---
 
 ## Objective
-
 Describe how Project Context evolves during the lifecycle of a Project.
 
 ## Overview
-
 Project Context is continuously updated by Contributors and preserved independently of implementation technology.
 
 ## Components
-
-* Project
-* Context
-* Contributor
+* **Project:** Defines scope, purpose, and ownership.
+* **Context:** Preserves decisions, architecture, knowledge, and operational guidance.
+* **Contributor:** Reads, proposes changes, and maintains the context.
 
 ## Dependencies
-
 * PCP Specification
-* Decision Log
-* Knowledge
+* Decision Log (`DEC-0001`)
 
 ## Constraints
-
-Project Context MUST remain technology independent.
+Project Context MUST remain technology independent and human-verifiable.
 
 ## Future Evolution
-
-Support additional implementation formats while preserving semantic compatibility.
-
+Support automated CLI validation and MCP retrieval while preserving semantic compatibility.

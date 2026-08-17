@@ -1,0 +1,10 @@
+{
+  "name": "pcp-workspace",
+  "private": true,
+  "type": "module",
+  "description": "Project Context Protocol (PCP) Monorepo / Workspace",
+  "scripts": {
+    "check": "node cli/bin/pcp.js check",
+    "pcp": "node cli/bin/pcp.js"
+  }
+}

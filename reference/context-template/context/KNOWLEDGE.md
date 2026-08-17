@@ -8,114 +8,56 @@ Unlike decisions, knowledge represents information that remains valuable over ti
 
 # Knowledge Entry Template
 
-## Identifier
-
-```text
-KN-0001
-```
-
+```markdown
 ---
-
-## Title
-
-```text
-Short descriptive title
-```
-
----
-
-## Category
-
-```text
-Business
-Domain
-Technical
-Architecture
-Process
-Convention
-Constraint
-```
-
+id: "KN-0001"
+title: "Short descriptive title"
+category: "architecture" # business | domain | technical | architecture | process | convention | constraint
+status: "active" # active | deprecated
+created_at: "YYYY-MM-DD"
+updated_at: "YYYY-MM-DD"
+source: "PCP Specification"
+tags: ["core", "principles"]
+dependencies: []
 ---
 
 ## Description
-
 Describe the knowledge clearly and concisely.
 
----
-
 ## Why It Matters
-
 Explain why contributors should know this information.
 
----
-
-## Source
-
-Record where this knowledge originated.
-
-Examples:
-
-```text
-Specification
-Decision Log
-Customer Requirement
-External Standard
-Team Agreement
-```
-
----
+## Source Details
+Provide additional background on the origin or references.
 
 ## Related Knowledge
-
-Reference related knowledge entries.
-
-Example:
-
-```text
-KN-0004
-KN-0011
+* `KN-0000`
 ```
 
 ---
 
 # Example
 
-## Identifier
-
-```text
-KN-0001
-```
-
-## Title
-
-```text
-Project Context Is Technology Independent
-```
-
-## Category
-
-```text
-Architecture
-```
+---
+id: "KN-0001"
+title: "Project Context Is Technology Independent"
+category: "architecture"
+status: "active"
+created_at: "2026-08-17"
+updated_at: "2026-08-17"
+source: "PCP Specification"
+tags: ["interoperability", "standards"]
+dependencies: []
+---
 
 ## Description
-
-Project Context represents concepts rather than implementation technologies.
+Project Context defines standardized conceptual models and normative semantics rather than specific storage or implementation technologies.
 
 ## Why It Matters
+This allows multiple compliant implementations (Markdown, JSON, SQLite, Graph DB) to remain conceptually interoperable across tools and platforms.
 
-This allows different implementations to remain interoperable while using different storage formats and tools.
-
-## Source
-
-```text
-PCP Specification
-```
+## Source Details
+Defined in PCP Specification Section 5.3 (Technology Independence).
 
 ## Related Knowledge
-
-```text
 None
-```
-

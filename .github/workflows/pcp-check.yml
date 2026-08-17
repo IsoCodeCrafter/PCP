@@ -1,0 +1,32 @@
+name: PCP Context Integrity Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-context:
+    name: Validate Project Context
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+          cache-dependency-path: cli/package-lock.json
+
+      - name: Install CLI Dependencies
+        run: |
+          cd cli
+          npm ci || npm install
+
+      - name: Run PCP Conformance & Integrity Linter
+        run: |
+          node cli/bin/pcp.js check

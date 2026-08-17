@@ -1,0 +1,27 @@
+# PCP Context Manifest
+# Spec Version: 0.1 | Reference Implementation Level 2
+pcp_version: "0.1"
+schema_version: "1.0"
+
+project:
+  id: "your-project-id"
+  name: "Your Project Name"
+  description: "Brief summary of what this project does and its core objective."
+  created_at: "YYYY-MM-DD"
+
+components:
+  architecture:
+    path: "ARCHITECTURE.md"
+    status: "active"
+  decisions:
+    path: "DECISION_LOG.md"
+    count: 0
+  knowledge:
+    path: "KNOWLEDGE.md"
+    count: 0
+  open_work:
+    path: "OPEN_WORK.md"
+    active_items: 0
+  operational_guide:
+    path: "OPERATIONAL_GUIDE.md"
+    status: "active"

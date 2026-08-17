@@ -8,118 +8,73 @@ Document repeatable operational procedures rather than one-time tasks.
 
 # Operational Procedure Template
 
-## Identifier
-
-```text
-OPS-0001
-```
-
+```markdown
 ---
-
-## Title
-
-```text
-Short descriptive title
-```
-
+id: "OPS-0001"
+title: "Short descriptive title"
+status: "active" # active | deprecated
+created_at: "YYYY-MM-DD"
+updated_at: "YYYY-MM-DD"
+tags: ["deployment", "release"]
+dependencies: []
 ---
 
 ## Objective
-
 Describe the purpose of this procedure.
 
----
-
 ## Prerequisites
-
-List everything required before starting.
-
-Examples:
-
-* Required permissions
-* Required software
-* Required environment
-* Required credentials
-
----
+List everything required before starting:
+* Required permissions or credentials.
+* Required runtime environment / software.
 
 ## Procedure
-
-Describe the steps in sequential order.
-
-Example:
-
-1. Prepare
-2. Execute
-3. Verify
-4. Complete
-
-Each step should be:
-
-* Clear
-* Repeatable
-* Verifiable
-
----
+Describe the steps in sequential order:
+1. Step 1 (Action)
+2. Step 2 (Validation)
+3. Step 3 (Completion)
 
 ## Expected Result
-
-Describe the expected outcome.
-
----
+Describe the expected outcome after successful completion.
 
 ## Rollback
-
 If applicable, describe how to safely undo the procedure.
 
----
-
 ## Notes
-
 Include additional operational considerations or warnings.
+```
 
 ---
 
 # Example
 
-## Identifier
-
-```text
-OPS-0001
-```
-
-## Title
-
-```text
-Deploy a New Release
-```
+---
+id: "OPS-0001"
+title: "Deploy a New Release"
+status: "active"
+created_at: "2026-08-17"
+updated_at: "2026-08-17"
+tags: ["release", "production"]
+dependencies: []
+---
 
 ## Objective
-
-Deploy the latest stable version to production.
+Deploy the latest stable release to the target environment.
 
 ## Prerequisites
-
-* Deployment permissions
-* Production environment access
-* Successful build
+* Production deployment credentials.
+* Clean CI/CD pipeline pass (`pcp check` and test suite).
 
 ## Procedure
-
-1. Build the application.
-2. Run validation checks.
-3. Deploy the release.
-4. Verify the deployment.
+1. Run local context and code validation.
+2. Tag release in Git repository (`git tag vX.Y.Z`).
+3. Trigger CI release workflow.
+4. Verify health endpoints post-deployment.
 
 ## Expected Result
-
-The new release is available and operating normally.
+The new release is active and operational.
 
 ## Rollback
-
-Redeploy the previous stable release if verification fails.
+Trigger the rollback workflow to revert to the previous Git tag.
 
 ## Notes
-
-Perform deployments during the approved maintenance window.
-
+Deployments should be executed within designated maintenance windows.
