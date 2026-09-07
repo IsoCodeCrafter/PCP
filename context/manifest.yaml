@@ -14,13 +14,10 @@ components:
     status: "active"
   decisions:
     path: "DECISION_LOG.md"
-    count: 2
   knowledge:
     path: "KNOWLEDGE.md"
-    count: 3
   open_work:
     path: "OPEN_WORK.md"
-    active_items: 0
   operational_guide:
     path: "OPERATIONAL_GUIDE.md"
     status: "active"

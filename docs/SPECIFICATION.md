@@ -62,15 +62,22 @@ These keywords indicate the level of obligation associated with a requirement:
 
 ## 4.1 Normative References
 
-The following documents are indispensable for the application of this specification.
+The following documents and schemas are indispensable for the application of this specification.
 
 ### RFC 2119
-
 Key words for use in RFCs to Indicate Requirement Levels.
 
 ### RFC 8174
-
 Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words.
+
+### RFC-0001
+PCP Canonical Entry Point and Structured Metadata Model (`rfcs/RFC-0001-Core-Context-Model.md`).
+
+### PCP Manifest Schema
+Canonical JSON Schema for PCP Manifest (`docs/schemas/manifest.schema.json`).
+
+### PCP Entry Frontmatter Schema
+Canonical JSON Schema for PCP Entry Frontmatter (`docs/schemas/entry.schema.json`).
 
 ---
 
@@ -150,6 +157,18 @@ A PCP-compliant Project Context SHALL contain, at a minimum, the following conce
 * Operational Guide
 
 Implementations MAY organize these components differently, provided that their meaning and relationships are preserved.
+
+## 6.0 Canonical Entry Point: Manifest
+
+Every PCP-compliant Project Context SHALL provide a canonical entry point named `manifest.yaml` (or conforming manifest representation) located at the root of the context directory.
+
+The Manifest functions as a deterministic discovery and routing map. It declares:
+* Protocol and schema versioning (`pcp_version`, `schema_version`)
+* Project identity metadata (`project.id`, `project.name`)
+* Component routing (`components`), mapping logical component names to their relative file paths.
+
+### Single Source of Truth (SSOT) Constraint
+The Manifest SHALL NOT duplicate derived state or metrics (such as entry counts, item counters, or completed item tallies) that are canonically maintained within the individual component documents themselves. The Manifest serves strictly as a discovery, routing, and metadata index. Conforming implementations MUST adhere to `docs/schemas/manifest.schema.json`.
 
 ## 6.1 Decisions
 
@@ -242,6 +261,14 @@ Implementations MUST preserve semantic equivalence when transforming or exchangi
 ## REQ-006
 
 Implementations MAY introduce additional concepts provided they do not violate PCP semantics.
+
+## REQ-007
+
+A Project Context MUST provide a deterministic Canonical Entry Point (`manifest.yaml`) conforming to `docs/schemas/manifest.schema.json`.
+
+## REQ-008
+
+Structured metadata entries within Markdown components MUST conform to the YAML Frontmatter specification defined in RFC-0001 and `docs/schemas/entry.schema.json`.
 
 ---
 

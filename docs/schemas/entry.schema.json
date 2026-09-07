@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://projectcontextprotocol.org/schemas/v0.1/entry.schema.json",
+  "title": "PCP Entry Frontmatter Schema",
+  "description": "Normative schema for structured entry metadata headers across PCP Markdown components (RFC-0001).",
+  "type": "object",
+  "required": ["id", "title"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Z0-9]+-[0-9]{4,}$",
+      "description": "Unique identifier composed of uppercase prefix and numeric counter (e.g. DEC-0001, ARCH-0001)."
+    },
+    "title": {
+      "type": "string",
+      "description": "Concise human-readable title for the entry."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "proposed",
+        "accepted",
+        "rejected",
+        "deprecated",
+        "superseded",
+        "open",
+        "in_progress",
+        "blocked",
+        "completed",
+        "cancelled"
+      ],
+      "description": "Standardized lifecycle status of the entry."
+    },
+    "created_at": {
+      "type": "string",
+      "description": "Creation date in ISO 8601 (YYYY-MM-DD) format."
+    },
+    "updated_at": {
+      "type": "string",
+      "description": "Last update date in ISO 8601 (YYYY-MM-DD) format."
+    },
+    "date": {
+      "type": "string",
+      "description": "Alias for created_at used in decision records."
+    },
+    "contributors": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of contributing entities (human, AI, or automation)."
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Categorization and search tags."
+    },
+    "dependencies": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Referenced dependency entry IDs."
+    },
+    "supersedes": {
+      "type": ["string", "null"],
+      "description": "ID of previous entry superseded by this entry."
+    },
+    "superseded_by": {
+      "type": ["string", "null"],
+      "description": "ID of subsequent entry that supersedes this entry."
+    }
+  },
+  "additionalProperties": true
+}

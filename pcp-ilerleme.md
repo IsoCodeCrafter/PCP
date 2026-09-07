@@ -182,6 +182,11 @@ PCP/
   - CLI `pcp add <component>` komutu eklendi (`--title`, `--content`, `--status`, `--tags`, `--deps`, `--file`).
   - MCP sunucusuna `pcp_apply_entry` aracı ve `pcp_propose_entry` içine opsiyonel `apply: boolean` yeteneği entegre edildi.
   - Test süitine `cli/test/entry.test.js` eklendi (toplam 13/13 test başarılı).
+- [x] **[Standart ve Şema Hizalaması (v0.1 Consistency Alignment)]:**
+  - `manifest.yaml` dosyalarından türetilmiş `count` ve `active_items` alanları temizlendi (SSOT kuralı: Manifest = Metadata + Router/Path).
+  - Normatif JSON Schema dosyaları oluşturuldu: `docs/schemas/manifest.schema.json` ve `docs/schemas/entry.schema.json`.
+  - `docs/SPECIFICATION.md` v0.1 şartnamesine Section 6.0 Canonical Entry Point (`manifest.yaml`), `REQ-007` ve `REQ-008` eklendi.
+  - `reference/` ve `cli/templates/` arasındaki bayt-bayt özdeşliği denetleyen drift testi (`cli/test/templates.test.js`) yazıldı (16/16 test yeşil).
 
 ### Sıradaki Adımlar (Next Horizon) & Gelecek Oturum Başlangıç Gündemi (TODO):
 - [ ] **Gelecek Oturum Geliştirme Önerileri (Vibe Coder UX & Adoption):**

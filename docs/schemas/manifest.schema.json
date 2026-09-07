@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://projectcontextprotocol.org/schemas/v0.1/manifest.schema.json",
+  "title": "PCP Manifest Schema",
+  "description": "Normative schema for the canonical PCP entry point (manifest.yaml) defining project identity and component routing.",
+  "type": "object",
+  "required": ["pcp_version", "project", "components"],
+  "properties": {
+    "pcp_version": {
+      "type": "string",
+      "description": "PCP specification version (e.g. '0.1')"
+    },
+    "schema_version": {
+      "type": "string",
+      "description": "Manifest schema version (e.g. '1.0')"
+    },
+    "project": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the project."
+        },
+        "name": {
+          "type": "string",
+          "description": "Human-readable project name."
+        },
+        "description": {
+          "type": "string",
+          "description": "Brief description of the project objective."
+        },
+        "created_at": {
+          "type": "string",
+          "description": "Project creation date in ISO 8601 (YYYY-MM-DD) format."
+        }
+      },
+      "additionalProperties": true
+    },
+    "components": {
+      "type": "object",
+      "description": "Mapping of canonical component names to their relative file paths and status.",
+      "patternProperties": {
+        "^[a-z0-9_-]+$": {
+          "type": "object",
+          "required": ["path"],
+          "properties": {
+            "path": {
+              "type": "string",
+              "description": "Relative path to the component markdown file."
+            },
+            "status": {
+              "type": "string",
+              "enum": ["active", "deprecated", "proposed", "draft"],
+              "description": "Lifecycle status of the component document."
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true
+}
