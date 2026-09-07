@@ -183,7 +183,11 @@ PCP/
   - MCP sunucusuna `pcp_apply_entry` aracı ve `pcp_propose_entry` içine opsiyonel `apply: boolean` yeteneği entegre edildi.
   - Test süitine `cli/test/entry.test.js` eklendi (toplam 13/13 test başarılı).
 
-### Sıradaki Adımlar (Next Horizon):
+### Sıradaki Adımlar (Next Horizon) & Gelecek Oturum Başlangıç Gündemi (TODO):
+- [ ] **Gelecek Oturum Geliştirme Önerileri (Vibe Coder UX & Adoption):**
+  1. **`pcp pack` (Bağlam Paketleyici / Exporter):** Harici Web LLM'leri (ChatGPT, Claude.ai, DeepSeek) için optimize edilmiş, özet ve token-dostu tek parça Markdown çıktısı üreten komut (`pcp pack | pbcopy`).
+  2. **`pcp sync-rules` (Editör Kuralları Köprüsü):** `.cursorrules`, `CLAUDE.md` ve `.github/copilot-instructions.md` içine standart PCP direktiflerini otomatik ekleyen senkronizasyon komutu.
+  3. **`pcp bootstrap` (Var Olan Projeyi Otomatik Anlama):** `package.json`, dizin yapısı ve Git geçmişini tarayarak mevcut projelere sıfır eforla taslak bağlam (draft context) üreten akıllı motor.
 - [ ] Glama otomatik inceleme ve skor rozetinin onaylanması.
 - [ ] Awesome-MCP PR birleştirilmesinin (merge) takip edilmesi.
 - [ ] Hacker News ("Show HN") ve Reddit tartışma lansmanlarının yapılması.
