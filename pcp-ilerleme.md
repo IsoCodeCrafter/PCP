@@ -187,15 +187,35 @@ PCP/
   - Normatif JSON Schema dosyaları oluşturuldu: `docs/schemas/manifest.schema.json` ve `docs/schemas/entry.schema.json`.
   - `docs/SPECIFICATION.md` v0.1 şartnamesine Section 6.0 Canonical Entry Point (`manifest.yaml`), `REQ-007` ve `REQ-008` eklendi.
   - `reference/` ve `cli/templates/` arasındaki bayt-bayt özdeşliği denetleyen drift testi (`cli/test/templates.test.js`) yazıldı (16/16 test yeşil).
+- [x] **[Gerçek Tüketici Doğrulaması (Consumer Integration Proven) - servis-planer-web]:**
+  - Gerçek tüketici projede (`servis-planer-web`) PCP v0.1 uçtan uca doğrulandı.
+  - Tam döngü çalıştırıldı: `Discover ➔ Read ➔ Search ➔ Propose ➔ Apply ➔ Validate`.
+  - `DEC-0002` mimari kararı MCP `pcp_apply_entry` üzerinden yazıldı; `pcp_check_integrity` ve `npx @craftsolutions/pcp check` ile 5 bileşen, 6 kayıt, 0 hata, 0 uyarı ile doğrulandı.
+  - Tüketici projedeki PCP entegrasyonu `17996bd` commit'i ile Git'e mühürlenip pushlandı.
+- [x] **[Çekirdek Kapsam Dondurma (Core Freeze)]:**
+  - Şartname (`SPECIFICATION.md`), JSON Şemaları, 5 temel bileşen (`ARCHITECTURE`, `DECISION_LOG`, `KNOWLEDGE`, `OPEN_WORK`, `OPERATIONAL_GUIDE`) ve MCP araç sözleşmesi v0.1 RC için mühürlendi.
+  - `pcp pack`, `pcp bootstrap`, `pcp sync-rules` ve semantik/vektör arama feature-creep olarak çekirdek v0.1 kapsamından çıkarılıp Faz 2 ergonomi gündemine aktarıldı.
 
-### Sıradaki Adımlar (Next Horizon) & Gelecek Oturum Başlangıç Gündemi (TODO):
-- [ ] **Gelecek Oturum Geliştirme Önerileri (Vibe Coder UX & Adoption):**
-  1. **`pcp pack` (Bağlam Paketleyici / Exporter):** Harici Web LLM'leri (ChatGPT, Claude.ai, DeepSeek) için optimize edilmiş, özet ve token-dostu tek parça Markdown çıktısı üreten komut (`pcp pack | pbcopy`).
-  2. **`pcp sync-rules` (Editör Kuralları Köprüsü):** `.cursorrules`, `CLAUDE.md` ve `.github/copilot-instructions.md` içine standart PCP direktiflerini otomatik ekleyen senkronizasyon komutu.
-  3. **`pcp bootstrap` (Var Olan Projeyi Otomatik Anlama):** `package.json`, dizin yapısı ve Git geçmişini tarayarak mevcut projelere sıfır eforla taslak bağlam (draft context) üreten akıllı motor.
-- [ ] Glama otomatik inceleme ve skor rozetinin onaylanması.
-- [ ] Awesome-MCP PR birleştirilmesinin (merge) takip edilmesi.
-- [ ] Hacker News ("Show HN") ve Reddit tartışma lansmanlarının yapılması.
+---
+
+## 6. Sıradaki Eylemler: PCP v0.1 Release Candidate (RC) Gündemi (TODO)
+
+### 📌 Aşama A: v0.1.2 Release Candidate (RC) Mühürleme
+- [ ] **`docs/CHANGELOG.md` Güncellemesi:** Şema standardizasyonu, SSOT temizliği, parser state machine, apply mekanizması ve canlı tüketici doğrulamasını içeren v0.1.2 sürüm notlarının yazılması.
+- [ ] **Sürüm Yükseltme (Version Bump):** `cli/package.json` sürümünün `0.1.2` olarak güncellenmesi.
+- [ ] **Git Commit & Tag:** PCP reposunda değişikliklerin mühürlenmesi ve `v0.1.2` git tag'inin GitHub'a pushlanması.
+- [ ] **NPM Paketi Yayını:** `@craftsolutions/pcp@0.1.2` sürümünün npmjs.com üzerinde yayınlanması.
+
+### 🚀 Aşama B: Faz 2 - Geliştirici Ergonomisi (Post-RC)
+- [ ] **`pcp pack` (Bağlam Derleyici / Exporter):** Harici Web LLM'leri (ChatGPT, Claude.ai, DeepSeek) için optimize edilmiş tek parça Markdown çıktısı üreten komut.
+- [ ] **`pcp sync-rules` (Editör Köprüsü):** `.cursorrules`, `CLAUDE.md` ve Copilot kural dosyalarına PCP direktiflerini senkronize eden CLI komutu.
+- [ ] **`pcp bootstrap` (Akıllı İçe Aktarma):** Mevcut repoları tarayıp taslak `context/` üreten motor.
+
+### 🌐 Aşama C: Ekosistem & Topluluk
+- [ ] Glama otomatik inceleme ve skor rozetinin takibi.
+- [ ] Awesome-MCP PR birleşmesinin takibi.
+- [ ] Hacker News ("Show HN") lansmanı.
+
 
 
 
