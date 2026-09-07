@@ -3,10 +3,10 @@
 import { parseArgs } from "node:util";
 import { initCommand } from "../src/commands/init.js";
 import { checkCommand } from "../src/commands/check.js";
+import { addCommand } from "../src/commands/add.js";
 import { startMcpServer } from "../src/mcp/server.js";
 import { logger } from "../src/utils/logger.js";
-
-const VERSION = "0.1.0";
+import { VERSION } from "../src/utils/version.js";
 
 const HELP_TEXT = `
 PCP CLI — Project Context Protocol (v${VERSION})
@@ -18,6 +18,7 @@ USAGE:
 COMMANDS:
   init      Initialize a standard PCP context in the current repository
   check     Validate manifest, schemas, and cross-reference integrity (Linter)
+  add       Append a validated entry to a context component (e.g. pcp add decisions)
   mcp       Start the Model Context Protocol (MCP) server for AI assistants
 
 OPTIONS:
@@ -25,12 +26,19 @@ OPTIONS:
   -v, --version    Show version number
   -d, --dir        Target context directory (default: ./context)
   -n, --name       Project name (for init)
-  -i, --id         Project ID (for init)
+  -i, --id         Project or Entry ID
   -f, --force      Force overwrite existing context files (for init)
+  -t, --title      Entry title (for add)
+  -c, --content    Entry content string (for add)
+  -s, --status     Entry status (e.g. active, proposed, accepted)
+  --tags           Comma-separated tags (for add)
+  --deps           Comma-separated dependency IDs (for add)
+  --file           Path to content markdown file (for add)
 
 EXAMPLES:
   $ pcp init --name "My Awesome App"
   $ pcp check
+  $ pcp add decisions --title "Use Redis Cache" --content "Cache session state in Redis."
   $ pcp mcp
 `;
 
@@ -54,7 +62,13 @@ function main() {
     dir: { type: "string", short: "d" },
     name: { type: "string", short: "n" },
     id: { type: "string", short: "i" },
-    force: { type: "boolean", short: "f" }
+    force: { type: "boolean", short: "f" },
+    title: { type: "string", short: "t" },
+    content: { type: "string", short: "c" },
+    status: { type: "string", short: "s" },
+    tags: { type: "string" },
+    deps: { type: "string" },
+    file: { type: "string" }
   };
 
   let parsed;
@@ -71,7 +85,7 @@ function main() {
 
   const options = parsed.values;
   const positionalDir = parsed.positionals[0];
-  const targetDir = options.dir || positionalDir;
+  const targetDir = options.dir || (command === "add" ? undefined : positionalDir);
 
   switch (command) {
     case "init":
@@ -87,6 +101,21 @@ function main() {
     case "validate":
       checkCommand({
         contextDir: targetDir
+      });
+      break;
+
+    case "add":
+    case "append":
+      addCommand({
+        contextDir: options.dir,
+        component: parsed.positionals[0],
+        title: options.title,
+        content: options.content,
+        status: options.status,
+        tags: options.tags,
+        dependencies: options.deps,
+        id: options.id,
+        file: options.file
       });
       break;
 

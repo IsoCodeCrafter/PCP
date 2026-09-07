@@ -21,6 +21,95 @@ export function parseManifest(manifestPath) {
 }
 
 /**
+ * Maximum lines to scan ahead for a YAML Frontmatter block.
+ */
+const MAX_FRONTMATTER_LINES = 250;
+
+/**
+ * Extracts and parses all YAML Frontmatter blocks from a Markdown string.
+ * Resilient against markdown horizontal rules and code blocks.
+ * 
+ * @param {string} content 
+ * @returns {Array<{ frontmatter: object, raw: string, startLine: number }>}
+ */
+export function parseMarkdownStringEntries(content) {
+  const lines = content.split(/\r?\n/);
+  const entries = [];
+
+  let inCodeBlock = false;
+  let codeBlockFence = "";
+
+  for (let i = 0; i < lines.length; i++) {
+    const rawLine = lines[i];
+    const trimmed = rawLine.trim();
+
+    // 1. Code block boundary tracking (``` or ~~~)
+    if (trimmed.startsWith("```") || trimmed.startsWith("~~~")) {
+      const fenceType = trimmed.slice(0, 3);
+      if (!inCodeBlock) {
+        inCodeBlock = true;
+        codeBlockFence = fenceType;
+      } else if (fenceType === codeBlockFence) {
+        inCodeBlock = false;
+        codeBlockFence = "";
+      }
+      continue;
+    }
+
+    if (inCodeBlock) {
+      continue;
+    }
+
+    // 2. Candidate YAML Frontmatter opening
+    if (trimmed === "---") {
+      let closingIndex = -1;
+      const yamlLines = [];
+
+      for (let j = i + 1; j < lines.length && (j - i) <= MAX_FRONTMATTER_LINES; j++) {
+        const nextTrimmed = lines[j].trim();
+
+        // If a code block starts inside candidate frontmatter, it is not frontmatter
+        if (nextTrimmed.startsWith("```") || nextTrimmed.startsWith("~~~")) {
+          break;
+        }
+
+        if (nextTrimmed === "---" || nextTrimmed === "...") {
+          closingIndex = j;
+          break;
+        }
+
+        yamlLines.push(lines[j]);
+      }
+
+      // If a matching closing delimiter was found and has content
+      if (closingIndex !== -1 && yamlLines.length > 0) {
+        const yamlString = yamlLines.join("\n").trim();
+        if (yamlString.length > 0) {
+          try {
+            const parsed = yaml.parse(yamlString);
+            // PCP Frontmatter must be an object with an 'id' string property
+            if (parsed && typeof parsed === "object" && typeof parsed.id === "string") {
+              entries.push({
+                frontmatter: parsed,
+                raw: yamlString,
+                startLine: i + 1
+              });
+              // Advance outer loop index to closing delimiter
+              i = closingIndex;
+              continue;
+            }
+          } catch (e) {
+            // Not a valid YAML frontmatter, treat as regular markdown
+          }
+        }
+      }
+    }
+  }
+
+  return entries;
+}
+
+/**
  * Extracts and parses all YAML Frontmatter blocks from a Markdown file.
  * Handles both top-of-file and inline multi-entry Frontmatter blocks.
  * 
@@ -33,51 +122,5 @@ export function parseMarkdownEntries(filePath) {
   }
 
   const content = fs.readFileSync(filePath, "utf8");
-  const lines = content.split(/\r?\n/);
-  const entries = [];
-
-  let inFrontmatter = false;
-  let currentYamlLines = [];
-  let blockStartLine = 0;
-
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i].trim();
-
-    if (line === "---") {
-      if (!inFrontmatter) {
-        inFrontmatter = true;
-        currentYamlLines = [];
-        blockStartLine = i + 1;
-      } else {
-        const yamlString = currentYamlLines.join("\n").trim();
-        
-        // If the block is completely empty (e.g. accidental consecutive ---), reset start line to current
-        if (yamlString.length === 0) {
-          blockStartLine = i + 1;
-          currentYamlLines = [];
-          // Remain in inFrontmatter state for the real block
-          continue;
-        }
-
-        inFrontmatter = false;
-        try {
-          const parsed = yaml.parse(yamlString);
-          if (parsed && typeof parsed === "object" && typeof parsed.id === "string") {
-            entries.push({
-              frontmatter: parsed,
-              raw: yamlString,
-              startLine: blockStartLine
-            });
-          }
-        } catch (e) {
-          // Not a valid YAML frontmatter block
-        }
-        currentYamlLines = [];
-      }
-    } else if (inFrontmatter) {
-      currentYamlLines.push(lines[i]);
-    }
-  }
-
-  return entries;
+  return parseMarkdownStringEntries(content);
 }

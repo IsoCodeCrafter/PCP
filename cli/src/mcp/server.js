@@ -11,6 +11,8 @@ import {
 } from "@modelcontextprotocol/sdk/types.js";
 import { parseManifest, parseMarkdownEntries } from "../core/parser.js";
 import { validateContext } from "../core/validator.js";
+import { formatEntryBlock, appendEntry, getNextEntryId, getComponentInfo } from "../core/entry.js";
+import { VERSION } from "../utils/version.js";
 
 /**
  * Resolves context directory path.
@@ -28,7 +30,7 @@ export function startMcpServer() {
   const server = new Server(
     {
       name: "pcp-context-server",
-      version: "0.1.0"
+      version: VERSION
     },
     {
       capabilities: {
@@ -230,6 +232,59 @@ export function startMcpServer() {
                 type: "string",
                 description: "Markdown body content for the entry (sections, rationale, procedure, etc.)"
               },
+              apply: {
+                type: "boolean",
+                description: "Optional. If true, directly appends the entry to the context file after integrity verification. Defaults to false."
+              },
+              context_path: {
+                type: "string",
+                description: "Optional custom path to the context directory"
+              }
+            },
+            required: ["component", "title", "content"]
+          }
+        },
+        {
+          name: "pcp_apply_entry",
+          description: "Append a new verified structured entry (Decision, Knowledge, Work Item, Architecture, or Ops Procedure) directly to the target context document. Automatically verifies integrity and rolls back on failure.",
+          inputSchema: {
+            type: "object",
+            properties: {
+              component: {
+                type: "string",
+                enum: ["architecture", "decisions", "knowledge", "open_work", "operational_guide"],
+                description: "Target component to append entry to"
+              },
+              id: {
+                type: "string",
+                description: "Optional unique ID for the entry (e.g. DEC-0003). Auto-generated if omitted."
+              },
+              title: {
+                type: "string",
+                description: "Descriptive title for the entry"
+              },
+              status: {
+                type: "string",
+                description: "Status (e.g. proposed, accepted, open, active)"
+              },
+              tags: {
+                type: "array",
+                items: { type: "string" },
+                description: "Categorization tags"
+              },
+              dependencies: {
+                type: "array",
+                items: { type: "string" },
+                description: "Referenced dependency IDs (e.g. ['ARCH-0001', 'DEC-0001'])"
+              },
+              supersedes: {
+                type: "string",
+                description: "Optional entry ID that this entry supersedes"
+              },
+              content: {
+                type: "string",
+                description: "Markdown body content for the entry"
+              },
               context_path: {
                 type: "string",
                 description: "Optional custom path to the context directory"
@@ -350,45 +405,51 @@ export function startMcpServer() {
         }
 
         case "pcp_propose_entry": {
-          const manifestPath = path.join(contextDir, "manifest.yaml");
-          const manifest = parseManifest(manifestPath);
-          const compConfig = manifest.components[args.component];
-          if (!compConfig) {
-            throw new Error(`Target component '${args.component}' is not defined in manifest.`);
-          }
+          if (args.apply === true) {
+            const result = appendEntry(contextDir, {
+              component: args.component,
+              id: args.id,
+              title: args.title,
+              status: args.status,
+              tags: args.tags,
+              dependencies: args.dependencies,
+              supersedes: args.supersedes,
+              content: args.content
+            });
 
-          const targetFile = compConfig.path || `${args.component.toUpperCase()}.md`;
-          const filePath = path.join(contextDir, targetFile);
-
-          // Auto-generate ID if not provided
-          let entryId = args.id;
-          if (!entryId) {
-            const prefixMap = {
-              architecture: "ARCH",
-              decisions: "DEC",
-              knowledge: "KN",
-              open_work: "WORK",
-              operational_guide: "OPS"
+            return {
+              content: [
+                {
+                  type: "text",
+                  text: JSON.stringify(
+                    {
+                      status: "applied",
+                      target_file: result.file,
+                      entry_id: result.id,
+                      total_entries: result.validation.stats.totalEntries,
+                      message: `Entry '${result.id}' successfully appended and validated.`
+                    },
+                    null,
+                    2
+                  )
+                }
+              ]
             };
-            const prefix = prefixMap[args.component] || "ITEM";
-            const existing = fs.existsSync(filePath) ? parseMarkdownEntries(filePath) : [];
-            const nextNum = String(existing.length + 1).padStart(4, "0");
-            entryId = `${prefix}-${nextNum}`;
           }
 
-          const today = new Date().toISOString().split("T")[0];
-          const frontmatterObj = {
+          const { relativePath } = getComponentInfo(contextDir, args.component);
+          const entryId = args.id || getNextEntryId(contextDir, args.component);
+
+          const { blockText } = formatEntryBlock({
+            component: args.component,
             id: entryId,
             title: args.title,
-            status: args.status || (args.component === "decisions" ? "proposed" : "active"),
-            created_at: today,
-            updated_at: today,
-            tags: args.tags || [],
-            dependencies: args.dependencies || []
-          };
-
-          const formattedYaml = yaml.stringify(frontmatterObj).trim();
-          const proposedBlock = `\n---\n${formattedYaml}\n---\n\n${args.content.trim()}\n`;
+            status: args.status,
+            tags: args.tags,
+            dependencies: args.dependencies,
+            supersedes: args.supersedes,
+            content: args.content
+          });
 
           return {
             content: [
@@ -397,11 +458,43 @@ export function startMcpServer() {
                 text: JSON.stringify(
                   {
                     status: "proposal_generated",
-                    target_file: targetFile,
+                    target_file: relativePath,
                     entry_id: entryId,
                     human_review_required: true,
                     instructions: "Review the proposed Markdown block below and approve insertion into the context file.",
-                    proposed_block: proposedBlock
+                    proposed_block: blockText
+                  },
+                  null,
+                  2
+                )
+              }
+            ]
+          };
+        }
+
+        case "pcp_apply_entry": {
+          const result = appendEntry(contextDir, {
+            component: args.component,
+            id: args.id,
+            title: args.title,
+            status: args.status,
+            tags: args.tags,
+            dependencies: args.dependencies,
+            supersedes: args.supersedes,
+            content: args.content
+          });
+
+          return {
+            content: [
+              {
+                type: "text",
+                text: JSON.stringify(
+                  {
+                    status: "applied",
+                    target_file: result.file,
+                    entry_id: result.id,
+                    total_entries: result.validation.stats.totalEntries,
+                    message: `Entry '${result.id}' successfully appended and validated.`
                   },
                   null,
                   2

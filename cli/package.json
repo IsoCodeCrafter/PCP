@@ -16,6 +16,7 @@
   ],
   "type": "module",
   "scripts": {
+    "test": "node --test test/**/*.test.js",
     "check": "node bin/pcp.js check",
     "init": "node bin/pcp.js init",
     "mcp": "node bin/pcp.js mcp"

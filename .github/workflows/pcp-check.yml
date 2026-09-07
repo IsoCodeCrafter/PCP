@@ -27,6 +27,11 @@ jobs:
           cd cli
           npm ci || npm install
 
+      - name: Run Unit Tests
+        run: |
+          cd cli
+          npm test
+
       - name: Run PCP Conformance & Integrity Linter
         run: |
           node cli/bin/pcp.js check

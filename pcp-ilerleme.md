@@ -169,6 +169,19 @@ PCP/
   - Reddit Weekly Self-Promotion başlığında resmi topluluk duyurusu yapıldı.
   - Glama MCP Server dizinine başvuru yapıldı ve otomatik test kuyruğuna alındı.
   - `punkpeye/awesome-mcp-servers` reposuna resmi Pull Request açılarak Glama rozeti ve standart etiketlerle (`🎖️ 📇 🏠 🍎 🪟 🐧`) formatlandı.
+- [x] **[Parser Güçlendirmesi & Test Süiti]:**
+  - `parser.js` içine kod bloğu (```/~~~) ve yatay çizgi (`---`) çakışmalarını önleyen state machine + lookahead eklendi.
+  - Bağımlılık getirmeden yerel `node:test` ve `node:assert` ile parser ve validator test süiti (`cli/test/`) kuruldu (9/9 test başarılı).
+  - Kök ve `cli` düzeyinde `npm test` scriptleri bağlandı.
+- [x] **[Workspace & Dinamik Sürüm Senkronizasyonu]:**
+  - Kök `package.json`'a npm `workspaces: ["cli"]` eklendi; monorepo tek bir `npm install` ile kurulabilir hale getirildi.
+  - `cli/src/utils/version.js` SSOT modülü oluşturuldu; `cli/bin/pcp.js` ve MCP sunucusu doğrudan `cli/package.json` sürümünü (`v0.1.1`) dinamik okuyor.
+  - Bağımlılık hijyeni denetlendi (`npm audit fix`), güvenlik açıkları sıfırlandı (0 vulnerabilities).
+- [x] **[Apply & Entry Yönetim Mimarisi]:**
+  - Çekirdek `cli/src/core/entry.js` modülü yazıldı: Çakışmasız ID artırımı (max ID + 1), RFC-0001 formatlama ve geçersiz bağlam durumunda otomatik geri alma (rollback on validation error) mekanizması kuruldu.
+  - CLI `pcp add <component>` komutu eklendi (`--title`, `--content`, `--status`, `--tags`, `--deps`, `--file`).
+  - MCP sunucusuna `pcp_apply_entry` aracı ve `pcp_propose_entry` içine opsiyonel `apply: boolean` yeteneği entegre edildi.
+  - Test süitine `cli/test/entry.test.js` eklendi (toplam 13/13 test başarılı).
 
 ### Sıradaki Adımlar (Next Horizon):
 - [ ] Glama otomatik inceleme ve skor rozetinin onaylanması.
