@@ -7,7 +7,7 @@
     "cli"
   ],
   "scripts": {
-    "test": "node --test cli/test/**/*.test.js",
+    "test": "npm --prefix cli test",
     "check": "node cli/bin/pcp.js check",
     "pcp": "node cli/bin/pcp.js"
   }
