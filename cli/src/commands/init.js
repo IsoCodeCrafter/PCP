@@ -80,5 +80,8 @@ export function initCommand(options = {}) {
   }
 
   logger.info(`Successfully initialized ${copiedCount} context files in '${path.relative(cwd, targetDir)}'.`);
-  logger.dim("\nNext step: Run 'npx pcp check' to verify context integrity.\n");
+  logger.dim("\nNext Steps:");
+  logger.dim("  1. Run 'npx @craftsolutions/pcp sync-rules' to configure AI editor rules (.cursorrules, CLAUDE.md).");
+  logger.dim("  2. Connect MCP in your editor or AI CLI: 'npx -y @craftsolutions/pcp mcp'");
+  logger.dim("  3. Run 'npx @craftsolutions/pcp check' to verify context integrity.\n");
 }

@@ -59,9 +59,9 @@ export function bootstrapCommand(options = {}) {
       logger.success(`Successfully bootstrapped ${result.files.length} tailored context files!`);
       logger.detail("Validation", "100% Valid (0 errors, 0 warnings)");
       logger.dim("\nNext Steps:");
-      logger.dim("  1. Run 'pcp check' to verify context health.");
-      logger.dim("  2. Run 'pcp sync-rules' to configure .cursorrules and CLAUDE.md.");
-      logger.dim("  3. Review ARCHITECTURE.md and DECISION_LOG.md to refine details.\n");
+      logger.dim("  1. Run 'npx @craftsolutions/pcp sync-rules' to configure AI editor rules (.cursorrules, CLAUDE.md).");
+      logger.dim("  2. Connect MCP in your editor or AI CLI: 'npx -y @craftsolutions/pcp mcp'");
+      logger.dim("  3. Run 'npx @craftsolutions/pcp check' to verify context health.\n");
     } else {
       logger.dim("(Dry-run simulation only. Re-run without --dry-run to generate context.)\n");
     }

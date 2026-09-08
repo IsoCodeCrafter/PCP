@@ -271,7 +271,30 @@ A change is classified as a **Context-Relevant Change** IF and ONLY IF it:
 > [!NOTE]
 > Routine implementation commits (e.g., visual styling adjustments, typographical corrections, internal function refactorings that preserve contracts, and isolated bugfixes within established boundaries) are **NOT Context-Relevant Changes** and MUST NOT impose context modification overhead on the contributor.
 
-## 7.4 Staleness & Drift Detection
+## 7.4 Session Handshake Protocol (Cold-Start Briefing)
+
+To eradicate cold-start ambiguity and confirm active contextual grounding, AI contributors operating within a PCP-governed project SHOULD perform a **Session Handshake** upon initial invocation or session launch:
+1. **Inspection:** The AI contributor reads `manifest.yaml`, identifies the latest entry in `DECISION_LOG.md`, and reads active items in `OPEN_WORK.md`.
+2. **Compact Status Briefing:** Before proceeding to arbitrary task execution, the AI contributor outputs a concise, token-friendly status card (typically 3–4 lines):
+   ```text
+   [PCP Active | <project-name>]
+   ⚡ Last Decision: DEC-XXXX (<title> - by <author>)
+   📋 Active Task: WORK-XXXX (<title>)
+   Ready. How should we proceed?
+   ```
+This eliminates the need for human developers to manually query context state and provides immediate visibility into multi-contributor continuity.
+
+## 7.5 Autonomous Context Synchronization & Gravity Matching
+
+To avoid prompt fatigue and prevent context drift during rapid iteration, AI contributors MUST NOT require repetitive manual confirmation before drafting Context-Relevant updates.
+
+Instead, contributors SHALL adhere to **Gravity Matching**:
+1. **Scope Evaluation:** When writing code that introduces a Context-Relevant Change (e.g., architectural pattern, new dependency, schema migration, or task completion), the AI contributor compares the change against the abstraction level of established entries.
+2. **Bundled Co-Location:** The AI contributor proactively updates the relevant context component (`DECISION_LOG.md`, `OPEN_WORK.md`, or `KNOWLEDGE.md`) alongside the code changes within the same workspace diff or commit.
+3. **Transparent Notification:** The AI contributor reports the context update in its completion summary (e.g., *"Context updated: DEC-0003 recorded, WORK-0001 marked completed"*).
+4. **Human Review via Git:** Human authorization (as mandated by REQ-009) is fulfilled when the human maintainer reviews and merges the unified Git diff or pull request.
+
+## 7.6 Staleness & Drift Detection
 
 Implementations and CI workflows SHOULD employ deterministic linters (such as `pcp check`) to ensure:
 * Integrity of all cross-references (`dependencies`, `supersedes`).

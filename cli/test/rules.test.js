@@ -26,6 +26,8 @@ describe("PCP Rules & Editor Bridge (cli/src/core/rules.js)", () => {
     assert.match(block, /my-context\/KNOWLEDGE\.md/);
     assert.match(block, /my-context\/OPEN_WORK\.md/);
     assert.match(block, /my-context\/OPERATIONAL_GUIDE\.md/);
+    assert.match(block, /Session Handshake/);
+    assert.match(block, /Autonomous Context Synchronization/);
     assert.match(block, /npx @craftsolutions\/pcp check/);
     assert.match(block, /npx @craftsolutions\/pcp pack -a/);
   });
