@@ -7,6 +7,7 @@ import { addCommand } from "../src/commands/add.js";
 import { packCommand } from "../src/commands/pack.js";
 import { rulesCommand } from "../src/commands/rules.js";
 import { bootstrapCommand } from "../src/commands/bootstrap.js";
+import { statusCommand } from "../src/commands/status.js";
 import { startMcpServer } from "../src/mcp/server.js";
 import { logger } from "../src/utils/logger.js";
 import { VERSION } from "../src/utils/version.js";
@@ -24,6 +25,7 @@ COMMANDS:
   check         Validate manifest, schemas, and cross-reference integrity (Linter)
   pack          Compile project context into a single portable bundle for LLMs
   sync-rules    Synchronize PCP directives to AI editor rule files (.cursorrules, CLAUDE.md, etc.)
+  status        Display instant project context card or generate shell aliases
   add           Append a validated entry to a context component (e.g. pcp add decisions)
   mcp           Start the Model Context Protocol (MCP) server for AI assistants
 
@@ -92,7 +94,9 @@ function main() {
     context: { type: "string", short: "c" },
     tags: { type: "string" },
     deps: { type: "string" },
-    file: { type: "string" }
+    file: { type: "string" },
+    alias: { type: "boolean" },
+    compact: { type: "boolean" }
   };
 
   let parsed;
@@ -159,6 +163,18 @@ function main() {
         contextDir: options.context,
         targets: options.targets,
         dryRun: options["dry-run"]
+      });
+      break;
+
+    case "status":
+    case "info":
+    case "card":
+      statusCommand({
+        dir: targetDir,
+        contextDir: options.context,
+        json: options.json,
+        compact: options.compact,
+        alias: options.alias
       });
       break;
 
