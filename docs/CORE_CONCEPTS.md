@@ -239,3 +239,26 @@ The following concepts extend the PCP conceptual model and are defined separatel
 * Validator
 
 These concepts build upon the four foundational concepts defined in this document.
+
+---
+
+# Ecosystem Boundaries & Taxonomy
+
+PCP operates within a wider ecosystem of software engineering tools. It defines a distinct, non-competing boundary within the modern software knowledge stack.
+
+## The Four Knowledge Layers
+
+Software knowledge is organized into four complementary layers:
+
+1. **Source Code (Git):** The executable reality of the project. Contains *what* the system does and *how* it does it.
+2. **Work Management (Jira, Linear, GitHub Issues):** Manages *ephemeral execution*—who does what, sprint backlog, and ticket state. When a ticket is closed, its primary operational lifecycle ends.
+3. **General Knowledge Management (Notion, Confluence, Internal Wikis):** Manages *human-centric organizational knowledge*—onboarding guides, team directories, and meeting minutes.
+4. **Project Continuity Context (PCP):** Manages *durable, machine-discoverable project context* co-located with the repository. Answers: *"When a human or AI contributor joins this codebase today, what architecture, invariants, and accepted decisions must they know to continue work correctly?"*
+
+## Complementarity (The Non-Exclusion Principle)
+
+PCP does not replace issue trackers or wikis:
+* Issue trackers answer: *"What task should be worked on next?"*
+* Wikis answer: *"How is our company organized?"*
+* PCP answers: *"What rules and architecture govern this codebase so that work continues seamlessly across contributor shifts?"*
+

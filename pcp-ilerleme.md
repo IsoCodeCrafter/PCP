@@ -227,6 +227,13 @@ PCP/
   - Test Güvencesi: `cli/test/bootstrap.test.js` ile 6 yeni test yazıldı; toplam test sayısı 38/38 (%100) yeşile ulaştı.
   - Vitrin: [README.md](file:///Users/maciso/PROJELER/PCP/README.md) ve `cli/README.md` hızlı başlangıç adımları güncellendi.
 
+- [x] **[Kurumsal Değerlendirme & Kavramsal Olgunlaşma (OriBridge Feedback & Enterprise Readiness)]:**
+  - OriBridge harici değerlendirmesi ve geri bildirimleri analiz edildi; mimari ve metodolojik 4 temel açık kapatıldı.
+  - **Context Yönetişimi & Yaşam Döngüsü (`docs/SPECIFICATION.md` Bölüm 7, REQ-009, REQ-010):** Bağlam sahipliği (Context Owner vs Contributor), Human-in-the-Loop onay protokolü, normatif **Context-Relevant Change** (Bağlamı İlgilendiren Değişiklik) kriterleri ve eskime/sapma (staleness/drift) tespiti standartlaştırıldı. Rutin kod commit'lerinin (ör. buton margin'i) gereksiz bağlam güncellemesi zorunluluğu getirmesi engellendi.
+  - **Ekosistem Sınırları & Bilgi Taksonomisi (`docs/SPECIFICATION.md` Bölüm 8, `docs/CORE_CONCEPTS.md`):** 4 Katmanlı Yazılım Bilgi Taksonomisi tanımlandı: Kod/Tarihçe (Git), İş/Yürütme (Jira/Linear), Genel Organizasyonel Bilgi (Notion/Confluence), ve Süreklilik Bağlamı (PCP). PCP'nin mevcut araçların yerini almadığı, onları tamamladığı (Non-Exclusion Principle) netleştirildi.
+  - **Kurumsal Doğrulama & A/B Benchmark Metodolojisi (`docs/BENCHMARK_METHODOLOGY.md`):** Boş pazarlama iddiaları ("sıfır halüsinasyon", ölçülmemiş tasarruf) yerine tekrarlanabilir, ampirik A/B test protokolü yazıldı. 4 temel metrik belirlendi: M1 Keşif Yükü (Tool Calls), M2 Keşif Token Maliyeti (Reconnaissance Tokens), M3 Mimari Uyum Oranı (Compliance Rate), M4 Yakınsama Tur Sayısı (Convergence Turns).
+  - **Ampirik Entegrasyon Kanıtı (`docs/INTEGRATION_EVIDENCE.md`):** `servis-planer-web` projesindeki gerçek entegrasyon (`17996bd`) 7 adımda somut ve filtrelenmemiş gözlemlerle belgelendi.
+
 ---
 
 ## 6. Sıradaki Eylemler: PCP v0.1 Release Candidate (RC) Gündemi (TODO)
@@ -242,7 +249,13 @@ PCP/
 - [x] **`pcp sync-rules` (Editör Köprüsü):** `.cursorrules`, `CLAUDE.md` ve Copilot kural dosyalarına PCP direktiflerini senkronize eden CLI komutu ve MCP aracı.
 - [x] **`pcp bootstrap` (Akıllı İçe Aktarma):** Mevcut repoları tarayıp taslak `context/` üreten motor, CLI komutu ve MCP aracı.
 
-### 🌐 Aşama C: Ekosistem & Topluluk
+### 🏛️ Aşama C: Kurumsal Hazırlık & Yönetişim (TAMAMLANDI)
+- [x] **Context Governance & Maintenance Specification:** `docs/SPECIFICATION.md` (Bölüm 7, REQ-009, REQ-010).
+- [x] **Ecosystem Boundaries & 4-Layer Taxonomy:** `docs/SPECIFICATION.md` (Bölüm 8) & `docs/CORE_CONCEPTS.md`.
+- [x] **Enterprise Replication Benchmark Methodology:** `docs/BENCHMARK_METHODOLOGY.md`.
+- [x] **Integration Evidence (`servis-planer-web`):** `docs/INTEGRATION_EVIDENCE.md`.
+
+### 🌐 Aşama D: Ekosistem & Topluluk
 - [ ] Glama otomatik inceleme ve skor rozetinin takibi.
 - [ ] Awesome-MCP PR birleşmesinin takibi.
 - [ ] Hacker News ("Show HN") lansmanı.
