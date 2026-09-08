@@ -200,6 +200,15 @@ PCP/
   - `cli/package.json` ve `package-lock.json` sürümü `0.1.2` yapıldı.
   - `LICENSE` ve `cli/LICENSE` dosyalarına resmi MIT lisans metni yazıldı.
   - 16/16 test ve `pcp check` tam başarıyla doğrulandı.
+- [x] **[Faz 2 Ergonomi - `pcp pack` (Bağlam Derleyici / Exporter)]:**
+  - Çekirdek derleme modülü `cli/src/core/pack.js` geliştirildi (Markdown & JSON formatları, tahmini token hesabı, içindekiler tablosu).
+  - Dayanıklı gövde ve prolog ayrıştırması: `parser.js` içine `endLine`, `body` çıkarımı ve `getDocumentPrologue` eklendi.
+  - Akıllı filtreleme: `--active-only` (`-a`) ile tamamlanmış/arşivlenmiş kayıtlar filtrelenerek token maliyeti optimize edildi.
+  - Bileşen filtreleme: `--components` ile takma adlar (`arch`, `dec`, `kn`, `work`, `ops`) üzerinden esnek alt küme seçimi sağlandı.
+  - Unix boru hattı (piping) desteği: `-o` belirtilmediğinde temiz çıktıyı doğrudan `stdout`'a yazarak `pcp pack -a | pbcopy` kullanımına imkan tanındı.
+  - MCP Sunucu Entegrasyonu: `pcp_pack_context` aracı ve `context://pack` kaynağı MCP sunucusuna entegre edildi.
+  - Test Güvencesi: `cli/test/pack.test.js` ile 7 yeni test yazıldı; toplam test sayısı 23/23 (%100) yeşile ulaştı.
+  - Vitrin Güncellemesi: [README.md](file:///Users/maciso/PROJELER/PCP/README.md) ve `cli/README.md` hızlı başlangıç adımlarına `pcp pack` eklendi.
 
 ---
 
@@ -212,7 +221,7 @@ PCP/
 - [x] **NPM Paketi Yayını:** `@craftsolutions/pcp@0.1.2` sürümü npmjs.com üzerinde başarıyla canlıya alındı.
 
 ### 🚀 Aşama B: Faz 2 - Geliştirici Ergonomisi (Post-RC)
-- [ ] **`pcp pack` (Bağlam Derleyici / Exporter):** Harici Web LLM'leri (ChatGPT, Claude.ai, DeepSeek) için optimize edilmiş tek parça Markdown çıktısı üreten komut.
+- [x] **`pcp pack` (Bağlam Derleyici / Exporter):** Harici Web LLM'leri (ChatGPT, Claude.ai, DeepSeek) için optimize edilmiş tek parça Markdown/JSON çıktısı üreten komut ve MCP aracı.
 - [ ] **`pcp sync-rules` (Editör Köprüsü):** `.cursorrules`, `CLAUDE.md` ve Copilot kural dosyalarına PCP direktiflerini senkronize eden CLI komutu.
 - [ ] **`pcp bootstrap` (Akıllı İçe Aktarma):** Mevcut repoları tarayıp taslak `context/` üreten motor.
 

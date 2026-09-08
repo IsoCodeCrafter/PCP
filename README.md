@@ -53,7 +53,16 @@ npx @craftsolutions/pcp init --name "My Project"
 npx @craftsolutions/pcp check
 ```
 
-### 3. Connect to AI Assistants via MCP (Cursor / Claude / Antigravity)
+### 3. Pack Context for Web LLMs (ChatGPT, Claude.ai, DeepSeek)
+```bash
+# Copy token-optimized active context directly to clipboard (macOS)
+npx @craftsolutions/pcp pack -a | pbcopy
+
+# Or compile into a portable Markdown file
+npx @craftsolutions/pcp pack -o context-bundle.md
+```
+
+### 4. Connect to AI Assistants via MCP (Cursor / Claude / Antigravity)
 Add this to your IDE's MCP configuration:
 ```json
 {

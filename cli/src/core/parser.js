@@ -92,7 +92,8 @@ export function parseMarkdownStringEntries(content) {
               entries.push({
                 frontmatter: parsed,
                 raw: yamlString,
-                startLine: i + 1
+                startLine: i + 1,
+                endLine: closingIndex + 1
               });
               // Advance outer loop index to closing delimiter
               i = closingIndex;
@@ -106,7 +107,30 @@ export function parseMarkdownStringEntries(content) {
     }
   }
 
+  // Extract body content for each entry (lines between closing delimiter and next entry or EOF)
+  for (let k = 0; k < entries.length; k++) {
+    const current = entries[k];
+    const nextStart = k + 1 < entries.length ? entries[k + 1].startLine - 1 : lines.length;
+    current.body = lines.slice(current.endLine, nextStart).join("\n").trim();
+  }
+
   return entries;
+}
+
+/**
+ * Extracts the document prologue (introductory markdown prior to the first frontmatter entry).
+ * 
+ * @param {string} content 
+ * @returns {string}
+ */
+export function getDocumentPrologue(content) {
+  const lines = content.split(/\r?\n/);
+  const entries = parseMarkdownStringEntries(content);
+  if (entries.length === 0) {
+    return content.trim();
+  }
+  const firstEntryStart = entries[0].startLine - 1;
+  return lines.slice(0, firstEntryStart).join("\n").trim();
 }
 
 /**

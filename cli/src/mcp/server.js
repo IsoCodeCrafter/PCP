@@ -12,6 +12,7 @@ import {
 import { parseManifest, parseMarkdownEntries } from "../core/parser.js";
 import { validateContext } from "../core/validator.js";
 import { formatEntryBlock, appendEntry, getNextEntryId, getComponentInfo } from "../core/entry.js";
+import { packContext } from "../core/pack.js";
 import { VERSION } from "../utils/version.js";
 
 /**
@@ -79,6 +80,12 @@ export function startMcpServer() {
           name: "Operational Guide",
           mimeType: "text/markdown",
           description: "Procedures for setup, contribution, deployment, and testing"
+        },
+        {
+          uri: "context://pack",
+          name: "Compiled Project Context Pack",
+          mimeType: "text/markdown",
+          description: "Consolidated project context bundle compiling all components in a single document"
         }
       ]
     };
@@ -88,6 +95,20 @@ export function startMcpServer() {
   server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
     const contextDir = resolveContextDir();
     const uri = request.params.uri;
+
+    if (uri === "context://pack") {
+      const result = packContext(contextDir, { activeOnly: false });
+      return {
+        contents: [
+          {
+            uri,
+            mimeType: "text/markdown",
+            text: result.output
+          }
+        ]
+      };
+    }
+
     const resourceMap = {
       "context://manifest": "manifest.yaml",
       "context://architecture": "ARCHITECTURE.md",
@@ -291,6 +312,33 @@ export function startMcpServer() {
               }
             },
             required: ["component", "title", "content"]
+          }
+        },
+        {
+          name: "pcp_pack_context",
+          description: "Compile and bundle the entire project context into a single self-contained Markdown or JSON document for LLM consumption, with optional filtering for active items only.",
+          inputSchema: {
+            type: "object",
+            properties: {
+              active_only: {
+                type: "boolean",
+                description: "If true, excludes completed, superseded, and deprecated items to optimize token usage"
+              },
+              components: {
+                type: "array",
+                items: { type: "string" },
+                description: "Optional list of component names to include (e.g. ['architecture', 'decisions'])"
+              },
+              format: {
+                type: "string",
+                enum: ["markdown", "json"],
+                description: "Output format (default: markdown)"
+              },
+              context_path: {
+                type: "string",
+                description: "Optional custom path to the context directory"
+              }
+            }
           }
         }
       ]
@@ -499,6 +547,23 @@ export function startMcpServer() {
                   null,
                   2
                 )
+              }
+            ]
+          };
+        }
+
+        case "pcp_pack_context": {
+          const result = packContext(contextDir, {
+            activeOnly: args?.active_only,
+            components: args?.components,
+            format: args?.format || "markdown"
+          });
+
+          return {
+            content: [
+              {
+                type: "text",
+                text: result.output
               }
             ]
           };

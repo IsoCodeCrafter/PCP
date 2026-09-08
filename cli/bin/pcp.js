@@ -4,6 +4,7 @@ import { parseArgs } from "node:util";
 import { initCommand } from "../src/commands/init.js";
 import { checkCommand } from "../src/commands/check.js";
 import { addCommand } from "../src/commands/add.js";
+import { packCommand } from "../src/commands/pack.js";
 import { startMcpServer } from "../src/mcp/server.js";
 import { logger } from "../src/utils/logger.js";
 import { VERSION } from "../src/utils/version.js";
@@ -18,6 +19,7 @@ USAGE:
 COMMANDS:
   init      Initialize a standard PCP context in the current repository
   check     Validate manifest, schemas, and cross-reference integrity (Linter)
+  pack      Compile project context into a single portable bundle for LLMs
   add       Append a validated entry to a context component (e.g. pcp add decisions)
   mcp       Start the Model Context Protocol (MCP) server for AI assistants
 
@@ -25,6 +27,10 @@ OPTIONS:
   -h, --help       Show this help message
   -v, --version    Show version number
   -d, --dir        Target context directory (default: ./context)
+  -o, --output     Output file path for packed context (default: stdout)
+  -a, --active     Pack only active items (filters completed/superseded entries)
+  --components     Comma-separated component names to include (e.g. arch,decisions)
+  --json           Output as structured JSON instead of Markdown
   -n, --name       Project name (for init)
   -i, --id         Project or Entry ID
   -f, --force      Force overwrite existing context files (for init)
@@ -38,6 +44,9 @@ OPTIONS:
 EXAMPLES:
   $ pcp init --name "My Awesome App"
   $ pcp check
+  $ pcp pack -o prompt-context.md
+  $ pcp pack -a | pbcopy
+  $ pcp pack --components architecture,decisions
   $ pcp add decisions --title "Use Redis Cache" --content "Cache session state in Redis."
   $ pcp mcp
 `;
@@ -66,6 +75,10 @@ function main() {
     title: { type: "string", short: "t" },
     content: { type: "string", short: "c" },
     status: { type: "string", short: "s" },
+    output: { type: "string", short: "o" },
+    active: { type: "boolean", short: "a" },
+    json: { type: "boolean" },
+    components: { type: "string" },
     tags: { type: "string" },
     deps: { type: "string" },
     file: { type: "string" }
@@ -101,6 +114,18 @@ function main() {
     case "validate":
       checkCommand({
         contextDir: targetDir
+      });
+      break;
+
+    case "pack":
+    case "bundle":
+    case "compile":
+      packCommand({
+        contextDir: targetDir,
+        output: options.output,
+        activeOnly: options.active,
+        json: options.json,
+        components: options.components
       });
       break;
 
