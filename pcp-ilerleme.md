@@ -237,6 +237,10 @@ PCP/
   - **Ekosistem Sınırları & Bilgi Taksonomisi (`docs/SPECIFICATION.md` Bölüm 8, `docs/CORE_CONCEPTS.md`):** 4 Katmanlı Yazılım Bilgi Taksonomisi tanımlandı: Kod/Tarihçe (Git), İş/Yürütme (Jira/Linear), Genel Organizasyonel Bilgi (Notion/Confluence), ve Süreklilik Bağlamı (PCP). PCP'nin mevcut araçların yerini almadığı, onları tamamladığı (Non-Exclusion Principle) netleştirildi.
   - **Kurumsal Doğrulama & A/B Benchmark Metodolojisi (`docs/BENCHMARK_METHODOLOGY.md`):** Boş pazarlama iddiaları ("sıfır halüsinasyon", ölçülmemiş tasarruf) yerine tekrarlanabilir, ampirik A/B test protokolü yazıldı. 4 temel metrik belirlendi: M1 Keşif Yükü (Tool Calls), M2 Keşif Token Maliyeti (Reconnaissance Tokens), M3 Mimari Uyum Oranı (Compliance Rate), M4 Yakınsama Tur Sayısı (Convergence Turns).
   - **Ampirik Entegrasyon Kanıtı (`docs/INTEGRATION_EVIDENCE.md`):** `servis-planer-web` ve `mobilservistakip.com.tr` projelerinde uçtan uca canlı doğrulandı.
+- [x] **[Canlı Oturum Doğrulaması & Launch Evidence (Fresh AI Session Dogfooding)]:**
+  - Kullanıcının hiçbir açıklama veya komut vermeden sadece "arkadaşım neler yaptık sordu" sorusu üzerine, taze bir AI oturumunun sıfır soğuk açılış sürtünmesiyle (`Discover ➔ Read ➔ Verify ➔ Status`) tüm günün 10 commit'lik durumunu eksiksiz ayağa kaldırması ve stakeholder e-postası üretmesi gözlemlendi.
+  - Harici paydaş / geliştirici geri bildirimiyle teyit edildi: *"AI intelligence'ı standardize etmiyoruz; project context'i standardize ediyoruz."*
+  - Ampirik vaka kanıtı olarak [docs/INTEGRATION_EVIDENCE.md](file:///Users/maciso/PROJELER/PCP/docs/INTEGRATION_EVIDENCE.md) içine **Case 2** olarak işlendi (Pazarlama jargonu yerine nesnel vaka analizi olarak korundu).
 
 ---
 
@@ -257,7 +261,7 @@ PCP/
 - [x] **Context Governance & Maintenance Specification:** `docs/SPECIFICATION.md` (Bölüm 7, REQ-009, REQ-010).
 - [x] **Ecosystem Boundaries & 4-Layer Taxonomy:** `docs/SPECIFICATION.md` (Bölüm 8) & `docs/CORE_CONCEPTS.md`.
 - [x] **Enterprise Replication Benchmark Methodology:** `docs/BENCHMARK_METHODOLOGY.md`.
-- [x] **Integration Evidence (`servis-planer-web`):** `docs/INTEGRATION_EVIDENCE.md`.
+- [x] **Integration Evidence (`servis-planer-web` & Fresh Session Dogfooding):** `docs/INTEGRATION_EVIDENCE.md`.
 
 ### 🌐 Aşama D: Ekosistem & Topluluk
 - [ ] Glama otomatik inceleme ve skor rozetinin takibi.
