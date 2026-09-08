@@ -13,6 +13,7 @@ import { parseManifest, parseMarkdownEntries } from "../core/parser.js";
 import { validateContext } from "../core/validator.js";
 import { formatEntryBlock, appendEntry, getNextEntryId, getComponentInfo } from "../core/entry.js";
 import { packContext } from "../core/pack.js";
+import { syncRules } from "../core/rules.js";
 import { VERSION } from "../utils/version.js";
 
 /**
@@ -340,6 +341,28 @@ export function startMcpServer() {
               }
             }
           }
+        },
+        {
+          name: "pcp_sync_rules",
+          description: "Synchronize PCP directives to AI editor rule files (.cursorrules, CLAUDE.md, .github/copilot-instructions.md, .windsurfrules) while preserving existing user instructions.",
+          inputSchema: {
+            type: "object",
+            properties: {
+              targets: {
+                type: "array",
+                items: { type: "string" },
+                description: "Optional list of target rule files ('cursor', 'claude', 'copilot', 'windsurf'). Defaults to cursor, claude, and copilot."
+              },
+              context_path: {
+                type: "string",
+                description: "Optional custom relative path to the context directory (default: context)"
+              },
+              project_root: {
+                type: "string",
+                description: "Optional root directory path of the project (default: current working directory)"
+              }
+            }
+          }
         }
       ]
     };
@@ -564,6 +587,36 @@ export function startMcpServer() {
               {
                 type: "text",
                 text: result.output
+              }
+            ]
+          };
+        }
+
+        case "pcp_sync_rules": {
+          const rootDir = args?.project_root ? path.resolve(args.project_root) : process.cwd();
+          const { results } = syncRules(rootDir, {
+            targets: args?.targets,
+            contextDir: args?.context_path || "context",
+            dryRun: false
+          });
+
+          return {
+            content: [
+              {
+                type: "text",
+                text: JSON.stringify(
+                  {
+                    status: "success",
+                    results: results.map((r) => ({
+                      target: r.target,
+                      name: r.name,
+                      file: r.file,
+                      action: r.action
+                    }))
+                  },
+                  null,
+                  2
+                )
               }
             ]
           };

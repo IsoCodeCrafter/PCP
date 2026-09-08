@@ -62,7 +62,13 @@ npx @craftsolutions/pcp pack -a | pbcopy
 npx @craftsolutions/pcp pack -o context-bundle.md
 ```
 
-### 4. Connect to AI Assistants via MCP (Cursor / Claude / Antigravity)
+### 4. Sync Directives to AI Editors (.cursorrules, CLAUDE.md, Copilot)
+```bash
+# Injects or updates PCP directives without touching your existing custom rules
+npx @craftsolutions/pcp sync-rules
+```
+
+### 5. Connect to AI Assistants via MCP (Cursor / Claude / Antigravity)
 Add this to your IDE's MCP configuration:
 ```json
 {

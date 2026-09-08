@@ -209,6 +209,14 @@ PCP/
   - MCP Sunucu Entegrasyonu: `pcp_pack_context` aracı ve `context://pack` kaynağı MCP sunucusuna entegre edildi.
   - Test Güvencesi: `cli/test/pack.test.js` ile 7 yeni test yazıldı; toplam test sayısı 23/23 (%100) yeşile ulaştı.
   - Vitrin Güncellemesi: [README.md](file:///Users/maciso/PROJELER/PCP/README.md) ve `cli/README.md` hızlı başlangıç adımlarına `pcp pack` eklendi.
+- [x] **[Faz 2 Ergonomi - `pcp sync-rules` (Editör Köprüsü)]:**
+  - Çekirdek kural senkronizasyon motoru `cli/src/core/rules.js` geliştirildi (`generatePcpRuleContent`, `mergeRuleContent`, `syncRules`).
+  - Cerrahi Koruma (PCP Marker Protokolü): `<!-- PCP_RULES_START -->` ve `<!-- PCP_RULES_END -->` sınırlarıyla geliştiricinin mevcut kurallarını koruyarak sadece PCP direktiflerini güvenle güncelleyen yapı kuruldu.
+  - Çoklu Editör & Ajan Desteği: Cursor (`.cursorrules`), Claude (`CLAUDE.md`), GitHub Copilot (`.github/copilot-instructions.md`) ve Windsurf (`.windsurfrules`).
+  - Simülasyon & İdempotans: `--dry-run` ile önizleme ve değişiklik olmayan dosyalarda sıfır yazma (`unchanged`) garantisi.
+  - MCP Entegrasyonu: `pcp_sync_rules` aracı MCP sunucusuna entegre edildi.
+  - Test Güvencesi: `cli/test/rules.test.js` ile 9 yeni test eklendi; toplam test sayısı 32/32 (%100) yeşile ulaştı.
+  - Dogfooding & Vitrin: PCP reposunun kendi `.cursorrules`, `CLAUDE.md` ve Copilot talimatları üretildi; [README.md](file:///Users/maciso/PROJELER/PCP/README.md) güncellendi.
 
 ---
 
@@ -222,7 +230,7 @@ PCP/
 
 ### 🚀 Aşama B: Faz 2 - Geliştirici Ergonomisi (Post-RC)
 - [x] **`pcp pack` (Bağlam Derleyici / Exporter):** Harici Web LLM'leri (ChatGPT, Claude.ai, DeepSeek) için optimize edilmiş tek parça Markdown/JSON çıktısı üreten komut ve MCP aracı.
-- [ ] **`pcp sync-rules` (Editör Köprüsü):** `.cursorrules`, `CLAUDE.md` ve Copilot kural dosyalarına PCP direktiflerini senkronize eden CLI komutu.
+- [x] **`pcp sync-rules` (Editör Köprüsü):** `.cursorrules`, `CLAUDE.md` ve Copilot kural dosyalarına PCP direktiflerini senkronize eden CLI komutu ve MCP aracı.
 - [ ] **`pcp bootstrap` (Akıllı İçe Aktarma):** Mevcut repoları tarayıp taslak `context/` üreten motor.
 
 ### 🌐 Aşama C: Ekosistem & Topluluk
