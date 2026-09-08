@@ -1,6 +1,6 @@
 {
   "name": "@craftsolutions/pcp",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Standardize Context, Not Intelligence. Official CLI & MCP Server for Project Context Protocol (PCP)",
   "main": "bin/pcp.js",
   "bin": {
