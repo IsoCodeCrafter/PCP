@@ -208,8 +208,8 @@ PCP/
 ### 📌 Aşama A: v0.1.2 Release Candidate (RC) Mühürleme
 - [x] **`docs/CHANGELOG.md` Güncellemesi:** Şema standardizasyonu, SSOT temizliği, parser state machine, apply mekanizması ve canlı tüketici doğrulamasını içeren v0.1.2 sürüm notlarının yazılması.
 - [x] **Sürüm Yükseltme (Version Bump):** `cli/package.json` sürümünün `0.1.2` olarak güncellenmesi.
-- [ ] **Git Commit & Tag:** PCP reposunda değişikliklerin mühürlenmesi (`v0.1.2`) ve GitHub'a pushlanması.
-- [ ] **NPM Paketi Yayını:** `@craftsolutions/pcp@0.1.2` sürümünün npmjs.com üzerinde yayınlanması (`npm publish --access public`).
+- [x] **Git Commit & Tag:** PCP reposunda değişiklikler mühürlendi (`f1dde43`), `v0.1.2` tag'i oluşturuldu ve GitHub'a pushlandı.
+- [x] **NPM Paketi Yayını:** `@craftsolutions/pcp@0.1.2` sürümü npmjs.com üzerinde başarıyla canlıya alındı.
 
 ### 🚀 Aşama B: Faz 2 - Geliştirici Ergonomisi (Post-RC)
 - [ ] **`pcp pack` (Bağlam Derleyici / Exporter):** Harici Web LLM'leri (ChatGPT, Claude.ai, DeepSeek) için optimize edilmiş tek parça Markdown çıktısı üreten komut.
