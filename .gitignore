@@ -4,3 +4,6 @@ dist/
 .pcp/
 *.log
 *.html
+
+cli/bin/pcp
+cli/bin/pcp-cli
