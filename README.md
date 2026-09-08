@@ -43,9 +43,14 @@ As projects grow, context becomes scattered across documentation, source code, i
 
 ## ⚡ Quickstart (CLI & MCP)
 
-### 1. Initialize Context in Any Repository
+### 1. Initialize Context
+For fresh repositories:
 ```bash
 npx @craftsolutions/pcp init --name "My Project"
+```
+Or smart-bootstrap from an existing codebase (auto-detects tech stack, package manager, and scripts):
+```bash
+npx @craftsolutions/pcp bootstrap
 ```
 
 ### 2. Verify Context Integrity (Linter)

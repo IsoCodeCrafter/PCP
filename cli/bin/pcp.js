@@ -6,6 +6,7 @@ import { checkCommand } from "../src/commands/check.js";
 import { addCommand } from "../src/commands/add.js";
 import { packCommand } from "../src/commands/pack.js";
 import { rulesCommand } from "../src/commands/rules.js";
+import { bootstrapCommand } from "../src/commands/bootstrap.js";
 import { startMcpServer } from "../src/mcp/server.js";
 import { logger } from "../src/utils/logger.js";
 import { VERSION } from "../src/utils/version.js";
@@ -19,6 +20,7 @@ USAGE:
 
 COMMANDS:
   init          Initialize a standard PCP context in the current repository
+  bootstrap     Inspect existing codebase and auto-generate tailored context files
   check         Validate manifest, schemas, and cross-reference integrity (Linter)
   pack          Compile project context into a single portable bundle for LLMs
   sync-rules    Synchronize PCP directives to AI editor rule files (.cursorrules, CLAUDE.md, etc.)
@@ -28,16 +30,16 @@ COMMANDS:
 OPTIONS:
   -h, --help       Show this help message
   -v, --version    Show version number
-  -d, --dir        Target directory (context dir for check/pack, project root for sync-rules)
+  -d, --dir        Target directory (context dir for check/pack, project root for bootstrap/rules)
   -o, --output     Output file path for packed context (default: stdout)
   -a, --active     Pack only active items (filters completed/superseded entries)
   --components     Comma-separated component names to include (e.g. arch,decisions)
   --json           Output as structured JSON instead of Markdown
   --targets        Target rule files to sync (cursor, claude, copilot, windsurf, all)
-  --dry-run        Simulate rule synchronization without writing files
-  -n, --name       Project name (for init)
+  --dry-run        Simulate operations without writing files to disk
+  -n, --name       Project name (for init / bootstrap)
   -i, --id         Project or Entry ID
-  -f, --force      Force overwrite existing context files (for init)
+  -f, --force      Force overwrite existing context files (for init / bootstrap)
   -t, --title      Entry title (for add)
   -c, --content    Entry content string (for add)
   -s, --status     Entry status (e.g. active, proposed, accepted)
@@ -47,11 +49,12 @@ OPTIONS:
 
 EXAMPLES:
   $ pcp init --name "My Awesome App"
+  $ pcp bootstrap
+  $ pcp bootstrap --dry-run
   $ pcp check
   $ pcp pack -o prompt-context.md
   $ pcp pack -a | pbcopy
   $ pcp sync-rules
-  $ pcp sync-rules --targets cursor,claude
   $ pcp add decisions --title "Use Redis Cache" --content "Cache session state in Redis."
   $ pcp mcp
 `;
@@ -115,6 +118,18 @@ function main() {
         name: options.name,
         id: options.id,
         force: options.force
+      });
+      break;
+
+    case "bootstrap":
+    case "scan":
+    case "auto":
+      bootstrapCommand({
+        dir: targetDir,
+        contextDir: options.context,
+        name: options.name,
+        force: options.force,
+        dryRun: options["dry-run"]
       });
       break;
 

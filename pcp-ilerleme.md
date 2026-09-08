@@ -217,6 +217,15 @@ PCP/
   - MCP Entegrasyonu: `pcp_sync_rules` aracı MCP sunucusuna entegre edildi.
   - Test Güvencesi: `cli/test/rules.test.js` ile 9 yeni test eklendi; toplam test sayısı 32/32 (%100) yeşile ulaştı.
   - Dogfooding & Vitrin: PCP reposunun kendi `.cursorrules`, `CLAUDE.md` ve Copilot talimatları üretildi; [README.md](file:///Users/maciso/PROJELER/PCP/README.md) güncellendi.
+- [x] **[Faz 2 Ergonomi - `pcp bootstrap` (Akıllı İçe Aktarma)]:**
+  - Çekirdek repo analizörü ve bağlam oluşturucu `cli/src/core/bootstrap.js` geliştirildi (`analyzeRepository`, `generateBootstrappedContext`, `bootstrapProject`).
+  - Çoklu ekosistem taraması: Node.js/TypeScript (`package.json`, `tsconfig.json`, pnpm/yarn/bun lockfiles), Python (`pyproject.toml`, `requirements.txt`), Rust (`Cargo.toml`), Go (`go.mod`), Docker ve CI iş akışları.
+  - Otomatik tespit ve bağlam sentezi: Proje kimliği, mimarisi (`ARCH-0001`), teknoloji seçimi ADR'si (`DEC-0001`), geliştirme kuralları (`KN-0001`), başlangıç işi (`WORK-0001`) ve projeye özel çalıştırma talimatları (`OPS-0001`) repoya özel gerçek verilerle üretildi.
+  - Güvenlik bariyeri: Mevcut bir bağlamın üzerine yanlışlıkla yazılmasını engelleyen çarpışma koruması (`--force` gerekliliği).
+  - Simülasyon modu: `--dry-run` ile dosyaları yazmadan önce tespit edilen yığın ve oluşturulacak dosyaların önizlemesi.
+  - MCP Entegrasyonu: `pcp_bootstrap_context` aracı MCP sunucusuna eklendi.
+  - Test Güvencesi: `cli/test/bootstrap.test.js` ile 6 yeni test yazıldı; toplam test sayısı 38/38 (%100) yeşile ulaştı.
+  - Vitrin: [README.md](file:///Users/maciso/PROJELER/PCP/README.md) ve `cli/README.md` hızlı başlangıç adımları güncellendi.
 
 ---
 
@@ -228,10 +237,10 @@ PCP/
 - [x] **Git Commit & Tag:** PCP reposunda değişiklikler mühürlendi (`f1dde43`), `v0.1.2` tag'i oluşturuldu ve GitHub'a pushlandı.
 - [x] **NPM Paketi Yayını:** `@craftsolutions/pcp@0.1.2` sürümü npmjs.com üzerinde başarıyla canlıya alındı.
 
-### 🚀 Aşama B: Faz 2 - Geliştirici Ergonomisi (Post-RC)
+### 🚀 Aşama B: Faz 2 - Geliştirici Ergonomisi (TAMAMLANDI)
 - [x] **`pcp pack` (Bağlam Derleyici / Exporter):** Harici Web LLM'leri (ChatGPT, Claude.ai, DeepSeek) için optimize edilmiş tek parça Markdown/JSON çıktısı üreten komut ve MCP aracı.
 - [x] **`pcp sync-rules` (Editör Köprüsü):** `.cursorrules`, `CLAUDE.md` ve Copilot kural dosyalarına PCP direktiflerini senkronize eden CLI komutu ve MCP aracı.
-- [ ] **`pcp bootstrap` (Akıllı İçe Aktarma):** Mevcut repoları tarayıp taslak `context/` üreten motor.
+- [x] **`pcp bootstrap` (Akıllı İçe Aktarma):** Mevcut repoları tarayıp taslak `context/` üreten motor, CLI komutu ve MCP aracı.
 
 ### 🌐 Aşama C: Ekosistem & Topluluk
 - [ ] Glama otomatik inceleme ve skor rozetinin takibi.

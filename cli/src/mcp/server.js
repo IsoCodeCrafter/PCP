@@ -14,6 +14,7 @@ import { validateContext } from "../core/validator.js";
 import { formatEntryBlock, appendEntry, getNextEntryId, getComponentInfo } from "../core/entry.js";
 import { packContext } from "../core/pack.js";
 import { syncRules } from "../core/rules.js";
+import { bootstrapProject } from "../core/bootstrap.js";
 import { VERSION } from "../utils/version.js";
 
 /**
@@ -363,6 +364,31 @@ export function startMcpServer() {
               }
             }
           }
+        },
+        {
+          name: "pcp_bootstrap_context",
+          description: "Analyze the current codebase (detecting language, framework, dependencies, scripts, and runtime) and auto-generate a tailored, schema-compliant PCP context directory.",
+          inputSchema: {
+            type: "object",
+            properties: {
+              project_root: {
+                type: "string",
+                description: "Path to project root directory (default: current working directory)"
+              },
+              context_path: {
+                type: "string",
+                description: "Optional custom relative path for context directory (default: context)"
+              },
+              name: {
+                type: "string",
+                description: "Optional explicit project name override"
+              },
+              force: {
+                type: "boolean",
+                description: "Force overwrite if context directory already exists (default: false)"
+              }
+            }
+          }
         }
       ]
     };
@@ -613,6 +639,40 @@ export function startMcpServer() {
                       file: r.file,
                       action: r.action
                     }))
+                  },
+                  null,
+                  2
+                )
+              }
+            ]
+          };
+        }
+
+        case "pcp_bootstrap_context": {
+          const rootDir = args?.project_root ? path.resolve(args.project_root) : process.cwd();
+          const result = bootstrapProject(rootDir, {
+            contextDir: args?.context_path || "context",
+            name: args?.name,
+            force: args?.force
+          });
+
+          return {
+            content: [
+              {
+                type: "text",
+                text: JSON.stringify(
+                  {
+                    status: "bootstrapped",
+                    project: result.analysis.name,
+                    id: result.analysis.id,
+                    languages: result.analysis.languages,
+                    frameworks: result.analysis.frameworks,
+                    files_created: result.files,
+                    validation: {
+                      valid: result.validation.valid,
+                      total_entries: result.validation.stats.totalEntries
+                    },
+                    message: `Successfully bootstrapped PCP context with ${result.files.length} tailored components.`
                   },
                   null,
                   2
