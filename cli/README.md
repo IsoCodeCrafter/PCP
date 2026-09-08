@@ -1,5 +1,6 @@
 # PCP (Project Context Protocol)
 
+[![npm version](https://img.shields.io/npm/v/@craftsolutions/pcp.svg)](https://www.npmjs.com/package/@craftsolutions/pcp)
 [![CI Status](https://github.com/IsoCodeCrafter/PCP/actions/workflows/pcp-check.yml/badge.svg)](https://github.com/IsoCodeCrafter/PCP/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![MCP Compatible](https://img.shields.io/badge/MCP-Compatible-blue.svg)](https://modelcontextprotocol.io)
@@ -36,8 +37,8 @@ As projects grow, context becomes scattered across documentation, source code, i
 # 🚀 Start Here
 
 > 📖 **New to PCP?** Read our practical beginner guides:
-> * 🇹🇷 [Türkçe Rehber (5 Dakikada PCP)](docs/GUIDE_TR.md)
-> * 🇬🇧 [PCP Explained for AI Developers](docs/PCP_EXPLAINED.md)
+> * 🇹🇷 [Türkçe Rehber (5 Dakikada PCP)](../docs/GUIDE_TR.md)
+> * 🇬🇧 [PCP Explained for AI Developers](../docs/PCP_EXPLAINED.md)
 
 ---
 
@@ -46,31 +47,31 @@ As projects grow, context becomes scattered across documentation, source code, i
 ### 1. Initialize Context
 For fresh repositories:
 ```bash
-npx pcp-cli init --name "My Project"
+npx @craftsolutions/pcp init --name "My Project"
 ```
 Or smart-bootstrap from an existing codebase (auto-detects tech stack, package manager, and scripts):
 ```bash
-npx pcp-cli bootstrap
+npx @craftsolutions/pcp bootstrap
 ```
 
 ### 2. Verify Context Integrity (Linter)
 ```bash
-npx pcp-cli check
+npx @craftsolutions/pcp check
 ```
 
 ### 3. Pack Context for Web LLMs (ChatGPT, Claude.ai, DeepSeek)
 ```bash
 # Copy token-optimized active context directly to clipboard (macOS)
-npx pcp-cli pack -a | pbcopy
+npx @craftsolutions/pcp pack -a | pbcopy
 
 # Or compile into a portable Markdown file
-npx pcp-cli pack -o context-bundle.md
+npx @craftsolutions/pcp pack -o context-bundle.md
 ```
 
 ### 4. Sync Directives to AI Editors (.cursorrules, CLAUDE.md, Copilot)
 ```bash
 # Injects or updates PCP directives without touching your existing custom rules
-npx pcp-cli sync-rules
+npx @craftsolutions/pcp sync-rules
 ```
 
 ### 5. Connect to AI Assistants via MCP (Cursor / Claude / Antigravity)
@@ -80,7 +81,7 @@ Add this to your IDE's MCP configuration:
   "mcpServers": {
     "pcp": {
       "command": "npx",
-      "args": ["-y", "pcp-cli", "mcp"]
+      "args": ["-y", "@craftsolutions/pcp", "mcp"]
     }
   }
 }
@@ -237,10 +238,12 @@ Alternative implementations may use different file formats, databases, or storag
 # Repository Structure
 
 ```text
-docs/           Specifications and documentation
-rfcs/           Design decisions and proposals
-reference/      Official reference implementation
-examples/       Example projects
+docs/           Specifications, guidelines, benchmarks, and schemas
+context/        Living project context of PCP itself (Dogfooding)
+cli/            Official Node.js CLI & Model Context Protocol (MCP) server
+rfcs/           Design decisions and architectural proposals
+reference/      Canonical reference implementation template
+examples/       Real-world and example projects
 assets/         Images and diagrams
 scripts/        Development utilities
 ```
@@ -249,24 +252,25 @@ scripts/        Development utilities
 
 # Project Status
 
-> ⚠️ **Active Design**
+> 🚀 **v0.1.2 Production Ready & Public Release**
 
-PCP is currently in the specification phase.
-
-The priority is building a stable conceptual foundation before developing tooling and integrations.
+PCP v0.1 specification is complete and published alongside its official Level 2/3 Reference Implementation, CLI tool (`@craftsolutions/pcp`), and native Model Context Protocol (MCP) server.
 
 ---
 
 # Roadmap
 
-* Complete PCP Specification v0.1
-* Publish Reference Context Template
-* Expand example projects
-* Build the Compliance Validator
-* Develop the PCP CLI
-* Publish VS Code integration
-* Publish MCP integration
-* Release PCP v1.0
+- [x] Complete PCP Specification v0.1
+- [x] Publish Canonical Reference Context Template (`reference/context-template`)
+- [x] Release Official CLI MVP (`init`, `check`, `status`)
+- [x] Release Native MCP Server (`pcp mcp`) with 9 tools and 7 resources
+- [x] Publish to NPM Registry (`@craftsolutions/pcp`)
+- [x] Implement Phase 2 Developer Ergonomics (`pack`, `sync-rules`, `bootstrap`)
+- [x] Establish Enterprise Governance, Handshake & Autonomous Sync Protocols
+- [x] Verify Real-World Production Codebases (`servis-planer-web`, `mobilservistakip.com.tr`)
+- [ ] VS Code / IDE Language Extension
+- [ ] Community Ecosystem Listings (Glama, Awesome-MCP)
+- [ ] PCP v1.0 Formal Standard Ratification
 
 ---
 
