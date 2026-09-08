@@ -18,6 +18,14 @@ export const SUPPORTED_TARGETS = {
     name: "GitHub Copilot",
     file: path.join(".github", "copilot-instructions.md")
   },
+  gemini: {
+    name: "Google Gemini & Antigravity",
+    file: "GEMINI.md"
+  },
+  agents: {
+    name: "Universal Agents Standard",
+    file: "AGENTS.md"
+  },
   windsurf: {
     name: "Windsurf IDE",
     file: ".windsurfrules"
@@ -149,7 +157,7 @@ export function syncRules(projectDir = ".", options = {}) {
 
   let targetKeys = [];
   if (!options.targets || options.targets === "all" || (Array.isArray(options.targets) && options.targets.includes("all"))) {
-    targetKeys = ["cursor", "claude", "copilot"];
+    targetKeys = ["cursor", "claude", "copilot", "gemini", "agents"];
   } else if (Array.isArray(options.targets)) {
     targetKeys = options.targets.map((t) => String(t).trim().toLowerCase());
   } else if (typeof options.targets === "string") {

@@ -83,12 +83,14 @@ describe("PCP Rules & Editor Bridge (cli/src/core/rules.js)", () => {
       // 1. Initial sync
       const firstRun = syncRules(tempDir, { contextDir: "context" });
       assert.equal(firstRun.dryRun, false);
-      assert.equal(firstRun.results.length, 3);
+      assert.equal(firstRun.results.length, 5);
       assert.ok(firstRun.results.every((r) => r.action === "created"));
 
       assert.ok(fs.existsSync(path.join(tempDir, ".cursorrules")));
       assert.ok(fs.existsSync(path.join(tempDir, "CLAUDE.md")));
       assert.ok(fs.existsSync(path.join(tempDir, ".github", "copilot-instructions.md")));
+      assert.ok(fs.existsSync(path.join(tempDir, "GEMINI.md")));
+      assert.ok(fs.existsSync(path.join(tempDir, "AGENTS.md")));
 
       // 2. Idempotent second sync
       const secondRun = syncRules(tempDir, { contextDir: "context" });
@@ -104,13 +106,15 @@ describe("PCP Rules & Editor Bridge (cli/src/core/rules.js)", () => {
     try {
       const result = syncRules(tempDir, { dryRun: true });
       assert.equal(result.dryRun, true);
-      assert.equal(result.results.length, 3);
+      assert.equal(result.results.length, 5);
       assert.ok(result.results.every((r) => r.action === "created"));
 
       // Nothing should have been written to disk
       assert.ok(!fs.existsSync(path.join(tempDir, ".cursorrules")));
       assert.ok(!fs.existsSync(path.join(tempDir, "CLAUDE.md")));
       assert.ok(!fs.existsSync(path.join(tempDir, ".github", "copilot-instructions.md")));
+      assert.ok(!fs.existsSync(path.join(tempDir, "GEMINI.md")));
+      assert.ok(!fs.existsSync(path.join(tempDir, "AGENTS.md")));
     } finally {
       fs.rmSync(tempDir, { recursive: true, force: true });
     }
